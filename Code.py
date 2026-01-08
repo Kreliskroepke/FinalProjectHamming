@@ -17,6 +17,7 @@ def binaryconvert(tekst):
             temp = ""
     print(nibblelist)
 
+#Standard Gen matrix from wikipedia
 G = np.array([
     [1, 1, 1, 0, 0, 0, 0],
     [1, 0, 0, 1, 1, 0, 0],
