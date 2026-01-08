@@ -83,6 +83,7 @@ G = np.array([
 ])
 G_T = G.transpose()
 
+"""
 def MultofMWithNibble():
     #verander dit nog naar de bit waarover we het hebben, is voorbeeld; verander ook functie input
     bleh = '0100'
@@ -99,3 +100,6 @@ def MultofMWithNibble():
     templist = [int(x) for x in templist]
     templist = np.array(templist)
     return templist
+"""
+
+
