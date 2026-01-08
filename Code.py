@@ -1,3 +1,5 @@
+import numpy as np
+
 def binaryconvert(tekst):
     x = "Hello"
     nibblelist = []
@@ -14,3 +16,11 @@ def binaryconvert(tekst):
             nibblelist.append(temp)
             temp = ""
     print(nibblelist)
+
+G = np.array([
+    [1, 1, 1, 0, 0, 0, 0],
+    [1, 0, 0, 1, 1, 0, 0],
+    [0, 1, 0, 1, 0, 1, 0],
+    [1, 1, 0, 1, 0, 0, 1]
+])
+print(G)
