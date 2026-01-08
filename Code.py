@@ -24,4 +24,6 @@ G = np.array([
     [0, 1, 0, 1, 0, 1, 0],
     [1, 1, 0, 1, 0, 0, 1]
 ])
-print(G)
+
+G_T = G.transpose()
+print(G_T)
