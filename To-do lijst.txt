@@ -28,3 +28,5 @@ write a code that randomly converts a given number of bits to test the code
 
 als dit werkt moeten we het ook kunnen uitbreiden naar andere Hamming codes
 dus dan verandert ook matrix G. je hebt bijv 15,11 en 31,26 dus principe zal hetzelfde zijn maar dan ingewikkelder?
+
+meer optimizen qua time complexity, heeft een hele lage prioriteit maar geeft wel bonussen denk ik bij meneer roomba
