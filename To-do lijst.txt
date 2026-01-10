@@ -1,2 +1,30 @@
+-------------------------------------------------------------------------------
 Schrijf hier alle dingen die we moeten doen, kunnen aanpassen of weg moeten:
+-------------------------------------------------------------------------------
 
+def matrix H en R
+code schrijven om matrix H en R af te leiden uit matrix G (dit kan volgens de opdracht, nog uizoeken hoe)
+
+def encode
+deze neemt message (str) 
+>> convert naar binary 
+>> divide into nibbles 
+>> neemt list van nibbles en doet voor elke nibble G*nibble = codemessage 
+>> krijg lijst van codemessages (7 bits) als output?
+
+def decode
+deze neemt list code messages 
+>> check elke code message (H*codemessage = getal) 
+>> als getal != 0 naar error correction en als getal ==0 verder decoden 
+>> gebruik matrix R om te decoden
+>> convert terug naar string
+
+def correct
+hier kom je als er geen 0 uitkomt na vermenigvuldiging met H tijdens decoden
+nog uitzoeken hoe te correcten
+
+def randomlyconvert
+write a code that randomly converts a given number of bits to test the code
+
+als dit werkt moeten we het ook kunnen uitbreiden naar andere Hamming codes
+dus dan verandert ook matrix G. je hebt bijv 15,11 en 31,26 dus principe zal hetzelfde zijn maar dan ingewikkelder?
