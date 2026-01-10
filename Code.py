@@ -23,7 +23,7 @@ class Matrix:
                     #for all columns
                     for j in range(self.inputs.shape[1]):
                         result[i,j] = self.inputs[i,j] + other.inputs[i,j]
-            return result
+            return Matrix(result)
         else:
             raise ValueError("The matrix can't be added due to a wrong type")
 
@@ -56,6 +56,14 @@ class Matrix:
             return resultaat
         else:
             raise ValueError("The matrix can't be multiplied due to a wrong type")
+
+    def transpose(self):
+        resultaat = Matrix(np.zeros((self.kolommen, self.rijen),dtype=int))
+
+        for i in range(self.kolommen):
+            for j in range(self.rijen):
+                resultaat.inputs[i][j] = self.inputs[j][i]
+        return resultaat
 
 def binaryconvert(tekst):
     x = "Hello"
