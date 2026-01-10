@@ -8,7 +8,8 @@ class Matrix:
     
     def __str__(self):
         return str(self.inputs)
-    
+
+    #define addition
     def __add__(self,other):
         if isinstance(other, Matrix):
             if self.inputs.shape != other.inputs.shape:
@@ -27,8 +28,10 @@ class Matrix:
         else:
             raise ValueError("The matrix can't be added due to a wrong type")
 
+    #define multiplication
     def __mul__(self, other):
         if isinstance(other, Matrix):
+            #Columns of A must match the rows of B
             if self.inputs.shape[1] != other.inputs.shape[0]:
                 raise ValueError("The matrices have the wrong sizes")
             else:
@@ -42,6 +45,7 @@ class Matrix:
                     resultaat.inputs[i][j] = som % 2
             return resultaat
 
+        #scalar multiplication for ints and floats
         elif isinstance(other, int):
             resultaat = Matrix(np.zeros((self.rijen, self.kolommen),dtype=int))
             for i in range(self.rijen):
@@ -54,6 +58,7 @@ class Matrix:
                 for j in range(self.kolommen):
                     resultaat.inputs[i][j] = (self.inputs[i][j] * other) % 2
             return resultaat
+        #if the other isnt a scalar or matrix, then error
         else:
             raise ValueError("The matrix can't be multiplied due to a wrong type")
 
@@ -65,6 +70,7 @@ class Matrix:
                 resultaat.inputs[i][j] = self.inputs[j][i]
         return resultaat
 
+#takes the initial input, and turns it into a list of nibbles
 def binaryconvert(tekst):
     x = "Hello"
     nibblelist = []
@@ -82,7 +88,7 @@ def binaryconvert(tekst):
             temp = ""
     print(nibblelist)
 
-#Standard Gen matrix from wikipedia
+#Standard Gen matrix from Wikipedia
 G = np.array([
     [1, 1, 1, 0, 0, 0, 0],
     [1, 0, 0, 1, 1, 0, 0],
