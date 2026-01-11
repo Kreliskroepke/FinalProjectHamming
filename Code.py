@@ -70,6 +70,17 @@ class Matrix:
                 resultaat.inputs[i][j] = self.inputs[j][i]
         return resultaat
 
+    def parity(self):
+        parity_matrix = []
+        bit_base = self.rijen
+        getallen = self.kolommen 
+        for i in range(1,getallen+1):
+            binaire_getal = format(i, "03b") #werkt nu voor bit_base3
+            kolom = [int(bit) for bit in binaire_getal]
+            parity_matrix.append(kolom)
+        return parity_matrix
+
+
 #takes the initial input, and turns it into a list of nibbles
 def binaryconvert(tekst):
     x = "Hello"
@@ -89,13 +100,15 @@ def binaryconvert(tekst):
     print(nibblelist)
 
 #Standard Gen matrix from Wikipedia
-G = np.array([
+G = Matrix([
     [1, 1, 1, 0, 0, 0, 0],
     [1, 0, 0, 1, 1, 0, 0],
     [0, 1, 0, 1, 0, 1, 0],
     [1, 1, 0, 1, 0, 0, 1]
 ])
 G_T = G.transpose()
+H = G.parity()
+
 
 """
 def MultofMWithNibble():
