@@ -23,7 +23,7 @@ class Matrix:
                 for i in range(self.inputs.shape[0]):
                     #for all columns
                     for j in range(self.inputs.shape[1]):
-                        result[i,j] = self.inputs[i,j] + other.inputs[i,j]
+                        result[i,j] = (self.inputs[i,j] + other.inputs[i,j]) % 2
             return Matrix(result)
         else:
             raise ValueError("The matrix can't be added due to a wrong type")
@@ -52,7 +52,7 @@ class Matrix:
                 for j in range(self.kolommen):
                     resultaat.inputs[i][j] = (self.inputs[i][j] * other) % 2
             return resultaat
-        elif isinstance(other, float):
+        elif isinstance(other, float): 
             resultaat = Matrix(np.zeros((self.rijen, self.kolommen),dtype=int))
             for i in range(self.rijen):
                 for j in range(self.kolommen):
@@ -70,15 +70,16 @@ class Matrix:
                 resultaat.inputs[i][j] = self.inputs[j][i]
         return resultaat
 
-    def parity(self):
+    #method om van G-matrix de parity matrix te maken
+    def parity(self): 
         parity_matrix = []
         bit_base = self.rijen
         getallen = self.kolommen 
         for i in range(1,getallen+1):
-            binaire_getal = format(i, "03b") #werkt nu voor bit_base3
+            binaire_getal = format(i, f"0{bit_base}b")
             kolom = [int(bit) for bit in binaire_getal]
             parity_matrix.append(kolom)
-        return parity_matrix
+        return Matrix(parity_matrix).transpose
 
 
 #takes the initial input, and turns it into a list of nibbles
@@ -88,7 +89,7 @@ def binaryconvert(tekst):
     temp = ""
 
     #turn it into binary, text -> ASCII -> binary
-    for char in x:
+    for char in x:             #zit hier niet een soort dubbele loop in nu? "for char in x" kan misschien weg?
         b = ''.join(format(ord(char), '08b') for char in x)
 
     #chop into segments of 4 and put in a list
