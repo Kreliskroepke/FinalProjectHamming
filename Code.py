@@ -84,20 +84,16 @@ class Matrix:
 
 #takes the initial input, and turns it into a list of nibbles
 def binaryconvert(tekst):
-    x = "Hello"
     nibblelist = []
-    temp = ""
-
-    #turn it into binary, text -> ASCII -> binary             
-        b = ''.join(format(ord(char), '08b') for char in x)
-
-    #chop into segments of 4 and put in a list
-    for char in b:
-        temp += char
-        if len(temp) == 4:
-            nibblelist.append(temp)
-            temp = ""
-    return(nibblelist)
+    bit_base = 4 #dit moet in fase 2 afhankelijk worden van k
+    
+    for i in tekst:
+        bits8 = format(ord(i), '08b')
+        nibbles = [bits8[j:j+bit_base] for j in range(0, 8, bit_base)]
+        for nibble in nibbles:
+            nibble = [int(c) for c in nibble]
+            nibblelist.append(nibble)
+    return nibblelist
 
 #Standard Gen matrix from Wikipedia
 G = Matrix([
