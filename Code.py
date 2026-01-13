@@ -89,8 +89,8 @@ def binaryconvert(tekst):
     temp = ""
 
     #turn it into binary, text -> ASCII -> binary
-    for char in x:             #zit hier niet een soort dubbele loop in nu? "for char in x" kan misschien weg?
-        b = ''.join(format(ord(char), '08b') for char in x)
+    for char in x:             
+        b = ''.join(format(ord(char), '08b'))
 
     #chop into segments of 4 and put in a list
     for char in b:
