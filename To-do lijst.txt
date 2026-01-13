@@ -21,6 +21,15 @@ MADELIEF:
 Fase 1 - Een werkende basiscode
 ------------------------------------
 
+def main()
+input = “message” (str)
+test_message = random_generator(getal)
+G = Matrix() (voor nu een global variable)
+codemessages = encode(message) (list)
+verstuur/test de code door walkie_talkie(codemessages) 
+receivedmessage = decode(codemessages) (matrix)
+return receivedmessage
+
 Class Matrix()
 DONE -	attributes :
 o	vorm
@@ -37,20 +46,6 @@ o	__radd__
 o	__mul__    >> let even op dat het werkt met list (if other list maak matrix)
 o	__rmul__  
 DONE o	__str__
-
-def main()
-input = “message” (str)
-test_message = random_generator(getal)
-G = Matrix() (voor nu een global variable)
-codemessages = encode(message) (list)
-test de code door random_storing(codeemessage)
-receivedmessage = decode(codemessages) (matrix)
-return receivedmessage
-
-def random_storing()
-	input = codemessage
-	random number of bits veranderen door magic
-	return aangepaste codemessage
 
 def encode()
 	input = “message” (str)
@@ -80,9 +75,14 @@ for each codemessage in codemessages:
 receivedmessage = convert_to_string(allnibbles)
 	return receivedmessage
 
+def random_storing()  				>> voorstel om deze code walkie_talkie te noemen
+	input = codemessage
+	random number of bits veranderen door magic
+	return aangepaste codemessage
+
 def correct()
 	input = codemessage 
-H = G.parity (matrix)
+	H = G.parity (matrix)
 	error = H*codemessage (vector)
 	error_position = error.position
 	if codemessage[error_position] ==0:
@@ -107,6 +107,10 @@ In verslag werken aan
 ----------------------------------------------
 Fase 2 - Uitbreiden naar meerdere Hamming codes
 ----------------------------------------------
+
+@classmethod maken waar relevant
+
+in correct: wat bij 2 fouten toevoegen
 
 def hamming_code()
 	r = aantal parity bits
