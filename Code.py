@@ -9,6 +9,10 @@ class Matrix:
     def __str__(self):
         return str(self.vorm)
 
+    #To print a matrix inside a list
+    def __repr__(self):
+        return str(self.vorm)
+
     #define addition
     def __add__(self,other):
         if isinstance(other, Matrix):
@@ -105,6 +109,17 @@ G = Matrix([
 G_T = G.transpose()
 H = G.parity()
 
+def encode(tekst):
+    codemessages = []
+    KnabbelLijst = binaryconvert(tekst)
+    for i in KnabbelLijst:
+        if G_T.kolommen != len(i):
+            raise ValueError("The length of the Knabbel doesn't coincide with the dimensions of G")
+        else:
+            p_vector = Matrix([[int(char)] for char in i])
+            codemessage = G_T * p_vector
+            codemessages.append(codemessage)
+    return codemessages
 
 """
 def MultofMWithNibble():
