@@ -88,9 +88,8 @@ def binaryconvert(tekst):
     nibblelist = []
     temp = ""
 
-    #turn it into binary, text -> ASCII -> binary
-    for char in x:             
-        b = ''.join(format(ord(char), '08b'))
+    #turn it into binary, text -> ASCII -> binary             
+        b = ''.join(format(ord(char), '08b') for char in x)
 
     #chop into segments of 4 and put in a list
     for char in b:
@@ -98,7 +97,7 @@ def binaryconvert(tekst):
         if len(temp) == 4:
             nibblelist.append(temp)
             temp = ""
-    print(nibblelist)
+    return(nibblelist)
 
 #Standard Gen matrix from Wikipedia
 G = Matrix([
