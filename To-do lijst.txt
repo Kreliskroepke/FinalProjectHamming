@@ -43,12 +43,14 @@ input = “message” (str)
 test_message = random_generator(getal)
 G = Matrix() (voor nu een global variable)
 codemessages = encode(message) (list)
+test de code door random_storing(codeemessage)
 receivedmessage = decode(codemessages) (matrix)
 return receivedmessage
 
-def random_generator()
-	input = getal
-	return test_message
+def random_storing()
+	input = codemessage
+	random number of bits veranderen door magic
+	return aangepaste codemessage
 
 def encode()
 	input = “message” (str)
