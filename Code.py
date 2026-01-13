@@ -1,29 +1,29 @@
 import numpy as np
 
 class Matrix:
-    def __init__(self, inputs):
-        self.inputs = np.array(inputs)
-        self.rijen = len(inputs)
-        self.kolommen = len(inputs[0])
+    def __init__(self, vorm):
+        self.vorm = np.array(vorm)
+        self.rijen = len(vorm)
+        self.kolommen = len(vorm[0])
     
     def __str__(self):
-        return str(self.inputs)
+        return str(self.vorm)
 
     #define addition
     def __add__(self,other):
         if isinstance(other, Matrix):
-            if self.inputs.shape != other.inputs.shape:
+            if self.vorm.shape != other.vorm.shape:
                 #thanks stackexchange
                 raise ValueError("The matrices aren't the same size")
             else: 
                 #empty matrix with the same dimensions
-                result = np.zeros(self.inputs.shape, dtype=self.inputs.dtype)
+                result = np.zeros(self.vorm.shape, dtype=self.vorm.dtype)
 
                 #for all rows
-                for i in range(self.inputs.shape[0]):
+                for i in range(self.vorm.shape[0]):
                     #for all columns
-                    for j in range(self.inputs.shape[1]):
-                        result[i,j] = (self.inputs[i,j] + other.inputs[i,j]) % 2
+                    for j in range(self.vorm.shape[1]):
+                        result[i,j] = (self.vorm[i,j] + other.vorm[i,j]) % 2
             return Matrix(result)
         else:
             raise ValueError("The matrix can't be added due to a wrong type")
@@ -32,7 +32,7 @@ class Matrix:
     def __mul__(self, other):
         if isinstance(other, Matrix):
             #Columns of A must match the rows of B
-            if self.inputs.shape[1] != other.inputs.shape[0]:
+            if self.vorm.shape[1] != other.vorm.shape[0]:
                 raise ValueError("The matrices have the wrong sizes")
             else:
                 resultaat = Matrix(np.zeros((self.rijen, other.kolommen),dtype=int))
@@ -41,8 +41,8 @@ class Matrix:
                 for j in range(other.kolommen):
                     som = 0
                     for k in range(self.kolommen):
-                        som += self.inputs[i][k] * other.inputs[k][j]
-                    resultaat.inputs[i][j] = som % 2
+                        som += self.vorm[i][k] * other.vorm[k][j]
+                    resultaat.vorm[i][j] = som % 2
             return resultaat
 
         #scalar multiplication for ints and floats
@@ -50,13 +50,13 @@ class Matrix:
             resultaat = Matrix(np.zeros((self.rijen, self.kolommen),dtype=int))
             for i in range(self.rijen):
                 for j in range(self.kolommen):
-                    resultaat.inputs[i][j] = (self.inputs[i][j] * other) % 2
+                    resultaat.vorm[i][j] = (self.vorm[i][j] * other) % 2
             return resultaat
         elif isinstance(other, float): 
             resultaat = Matrix(np.zeros((self.rijen, self.kolommen),dtype=int))
             for i in range(self.rijen):
                 for j in range(self.kolommen):
-                    resultaat.inputs[i][j] = (self.inputs[i][j] * other) % 2
+                    resultaat.vorm[i][j] = (self.vorm[i][j] * other) % 2
             return resultaat
         #if the other isnt a scalar or matrix, then error
         else:
@@ -67,7 +67,7 @@ class Matrix:
 
         for i in range(self.kolommen):
             for j in range(self.rijen):
-                resultaat.inputs[i][j] = self.inputs[j][i]
+                resultaat.vorm[i][j] = self.vorm[j][i]
         return resultaat
 
     #method om van G-matrix de parity matrix te maken
