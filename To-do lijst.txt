@@ -6,7 +6,7 @@ FF AFBLIJVEN WANT IK WERK AAN.....:
 ---------------------------------------------
 NICKY: parity, decode,
 CORRIE: encode
-MADELIEF: correct
+MADELIEF: correct, random_storing
 -------------------------------------------
 
 AFGEMAAKT DOOR:
