@@ -5,14 +5,14 @@ Schrijf hier alle dingen die we moeten doen, kunnen aanpassen of weg moeten:
 FF AFBLIJVEN WANT IK WERK AAN.....:
 ---------------------------------------------
 NICKY: parity, decode,
-CORRIE: encode
+CORRIE: 
 MADELIEF: correct, random_storing
 -------------------------------------------
 
 AFGEMAAKT DOOR:
 ---------------------------------------------
 NICKY: pseudocode, parity?
-CORRIE: binaryconvert,
+CORRIE: binaryconvert, encode
 MADELIEF: 
 -------------------------------------------
 
@@ -47,7 +47,7 @@ o	__mul__    >> let even op dat het werkt met list (if other list maak matrix)
 o	__rmul__  
 DONE o	__str__
 
-def encode()
+DONE def encode()
 	input = “message” (str)
 	nibblelist = binaryconvert(input) (list)
 	for each nibble in nibblelist:
