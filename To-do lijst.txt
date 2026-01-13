@@ -2,31 +2,140 @@
 Schrijf hier alle dingen die we moeten doen, kunnen aanpassen of weg moeten:
 -------------------------------------------------------------------------------
 
-def matrix H en R
-code schrijven om matrix H en R af te leiden uit matrix G (dit kan volgens de opdracht, nog uizoeken hoe)
+FF AFBLIJVEN WANT IK WERK AAN.....:
+---------------------------------------------
+NICKY: parity, decode,
+CORRIE: 
+MADELIEF: 
+-------------------------------------------
 
-def encode
-deze neemt message (str) 
->> convert naar binary 
->> divide into nibbles 
->> neemt list van nibbles en doet voor elke nibble G*nibble = codemessage 
->> krijg lijst van codemessages (7 bits) als output?
+AFGEMAAKT DOOR:
+---------------------------------------------
+NICKY: pseudocode, parity?
+CORRIE: binaryconvert,
+MADELIEF: 
+-------------------------------------------
 
-def decode
-deze neemt list code messages 
->> check elke code message (H*codemessage = getal) 
->> als getal != 0 naar error correction en als getal ==0 verder decoden 
->> gebruik matrix R om te decoden
->> convert terug naar string
 
-def correct
-hier kom je als er geen 0 uitkomt na vermenigvuldiging met H tijdens decoden
-nog uitzoeken hoe te correcten
+-----------------------------------
+Fase 1 - Een werkende basiscode
+------------------------------------
 
-def randomlyconvert
-write a code that randomly converts a given number of bits to test the code
+Class Matrix()
+DONE -	attributes :
+o	vorm
+o	rijen
+o	kolommen
+-	methods :
+DONE o	transpose
+DONE? o	parity : maakt van een matrix een parity check matrix (H)
+o	decoder : maakt van een matrix een decoder matrix (R)
+o	position: maakt van vector een number (bijv (1,0,1) = 101 = 5 in binary)
+-	dunder methods:
+o	__add__
+o	__radd__
+o	__mul__    >> let even op dat het werkt met list (if other list maak matrix)
+o	__rmul__  
+DONE o	__str__
 
-als dit werkt moeten we het ook kunnen uitbreiden naar andere Hamming codes
-dus dan verandert ook matrix G. je hebt bijv 15,11 en 31,26 dus principe zal hetzelfde zijn maar dan ingewikkelder?
+def main()
+input = “message” (str)
+test_message = random_generator(getal)
+G = Matrix() (voor nu een global variable)
+codemessages = encode(message) (list)
+receivedmessage = decode(codemessages) (matrix)
+return receivedmessage
 
-meer optimizen qua time complexity, heeft een hele lage prioriteit maar geeft wel bonussen denk ik bij meneer roomba
+def random_generator()
+	input = getal
+	return test_message
+
+def encode()
+	input = “message” (str)
+	nibblelist = binaryconvert(input) (list)
+	for each nibble in nibblelist:
+		codemessage = G*nibble  (array)
+		codemessages.append(codemessage)
+	return codemessages (list)
+
+DONE >> def binary_convert()
+	input = message
+	for each character in message:
+		turn into binary
+	divide into list with inputs length 4
+	return nibblelist (list)
+
+def decode()
+input = codemessages (list)
+H = G.parity (matrix)
+R = G.decoder (matrix)
+for each codemessage in codemessages:
+	vector = H*codemessage 
+		if vector != nulvector:
+			codemessage = correct(codemessage)
+		receivednibble = R * codemessage	
+		allnibbles .append(receivednibble) (list)			
+receivedmessage = convert_to_string(allnibbles)
+	return receivedmessage
+
+def correct()
+	input = codemessage 
+H = G.parity (matrix)
+	error = H*codemessage (vector)
+	error_position = error.position
+	if codemessage[error_position] ==0:
+		codemessage[error_position] = 1
+	else:
+		codemessage[error_position] = 0
+ 	return codemessage
+
+def convert_to_string()
+	input = allnibbles (list)
+	for each nibble in allnibbles:
+		make into string
+	binarycode = join all nibbles
+	receivedmessage = translate binary to characters
+	return receivedmessage
+
+
+In verslag werken aan
+-	Background
+-	Algorithme (de pseudocode en stack diagrams) 
+
+----------------------------------------------
+Fase 2 - Uitbreiden naar meerdere Hamming codes
+----------------------------------------------
+
+def hamming_code()
+	r = aantal parity bits
+	n = 2**r -1	(n is lengte codewoord)
+	k = n – r 	(k is aantal databits)
+
+Hamming 7,4 is Hamming met r = 3
+Moet ook werken voor r = 4 (15,11) en verder
+	
+def generator()
+	code om G te maken op basis van gekozen Hamming code
+
+in class: @classmethod / @staticmethod
+
+In verslag werken aan
+-	Uitbreiding algorithme met nieuwe functies toelichten
+-	Analyse algoritme
+-	Manual 
+-	Group work: task distribution
+
+------------------------------
+Fase 3 - Afmaken
+----------------------------
+
+Testen en eventueel verbeteren code
+time complexity als we tijd over hebben
+assert 
+unit tests
+
+Schrijven README-file
+
+Afmaken verslag
+-	Group work: results
+-	Conclusie schrijven
