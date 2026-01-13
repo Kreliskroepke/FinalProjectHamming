@@ -77,7 +77,7 @@ receivedmessage = convert_to_string(allnibbles)
 
 def random_storing()  				>> voorstel om deze code walkie_talkie te noemen
 	input = codemessage
-	random number of bits veranderen door magic
+	randomly a given number of bits veranderen door magic (er staat "randomly converts a given number of bits", dus aantal bits is niet random, maar gegeven denk ik dan?)
 	return aangepaste codemessage
 
 def correct()
