@@ -43,8 +43,8 @@ o	position: maakt van vector een number (bijv (1,0,1) = 101 = 5 in binary)
 -	dunder methods:
 o	__add__
 o	__radd__
-o	__mul__    >> let even op dat het werkt met list (if other list maak matrix)
-o	__rmul__  
+DONE o	__mul__    >> let even op dat het werkt met list (if other list maak matrix) WERKT OOK als het goed is
+DONE? o	__rmul__  
 DONE o	__str__
 
 DONE def encode()
