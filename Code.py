@@ -73,6 +73,10 @@ class Matrix:
         else:
             raise ValueError("The matrix can't be multiplied due to a wrong type")
 
+    #(scalar * M)    
+    def __rmul__(self, other):
+        return self.__mul__(other)
+    
     def transpose(self):
         resultaat = Matrix(np.zeros((self.kolommen, self.rijen),dtype=int))
 
