@@ -56,6 +56,7 @@ class Matrix:
                     resultaat.vorm[i][j] = som % 2
             return resultaat
 
+        #For convenience, (M * list), encode already turns the lists into matrices, so this is for tests
         elif isinstance(other,list):
             if len(other) != self.kolommen:
                 raise ValueError("The matrix and list have the wrong sizes")
