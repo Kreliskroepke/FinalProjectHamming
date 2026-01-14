@@ -1,5 +1,12 @@
 import numpy as np
 
+def main():
+    message = "hi"
+    codemessages = encode(message) 
+    #verstuur/test de code door walkie_talkie(codemessages) 
+    receivedmessage = decode(codemessages)
+    return receivedmessage
+
 class Matrix:
     def __init__(self, vorm):
         self.vorm = np.array(vorm)
@@ -74,18 +81,38 @@ class Matrix:
                 resultaat.vorm[i][j] = self.vorm[j][i]
         return resultaat
 
-    #method om van G-matrix de parity matrix te maken
+    #method om van G-matrix de parity matrix H te maken
     def parity(self): 
         parity_matrix = []
-        bit_base = self.rijen
+        bit_base = self.kolommen - self.rijen #afhankelijk van r, niet van n
         getallen = self.kolommen 
         for i in range(1,getallen+1):
             binaire_getal = format(i, f"0{bit_base}b")
             kolom = [int(bit) for bit in binaire_getal]
             parity_matrix.append(kolom)
-        return Matrix(parity_matrix).transpose
+        return Matrix(parity_matrix).transpose()
 
+#Standard Gen matrix from Wikipedia, voor nu global variable, wordt class variable oid
+G = Matrix([
+    [1, 1, 1, 0, 0, 0, 0],
+    [1, 0, 0, 1, 1, 0, 0],
+    [0, 1, 0, 1, 0, 1, 0],
+    [1, 1, 0, 1, 0, 0, 1]
+])
+G_T = G.transpose()
 
+def encode(tekst):
+    codemessages = []
+    KnabbelLijst = binaryconvert(tekst)
+    for i in KnabbelLijst:
+        if G_T.kolommen != len(i):
+            raise ValueError("The length of the Knabbel doesn't coincide with the dimensions of G")
+        else:
+            p_vector = Matrix([[int(char)] for char in i])
+            codemessage = G_T * p_vector
+            codemessages.append(codemessage)
+    return codemessages
+    
 #takes the initial input, and turns it into a list of nibbles
 def binaryconvert(tekst):
     nibblelist = []
@@ -99,27 +126,30 @@ def binaryconvert(tekst):
             nibblelist.append(nibble)
     return nibblelist
 
-#Standard Gen matrix from Wikipedia
-G = Matrix([
-    [1, 1, 1, 0, 0, 0, 0],
-    [1, 0, 0, 1, 1, 0, 0],
-    [0, 1, 0, 1, 0, 1, 0],
-    [1, 1, 0, 1, 0, 0, 1]
-])
-G_T = G.transpose()
-H = G.parity()
+#werkt nog niet helemaal, working on it 
+def decode(codemessages):
+    H = G.parity()                 # ik moet dit nog even goed checken
+    R = Matrix([                   # R wordt nog G.decoder 
+        [0, 0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0],
+        [0, 0, 0, 0, 0, 1, 0],
+        [0, 0, 0, 0, 0, 0, 1]
+    ])
+    allnibbles = []
 
-def encode(tekst):
-    codemessages = []
-    KnabbelLijst = binaryconvert(tekst)
-    for i in KnabbelLijst:
-        if G_T.kolommen != len(i):
-            raise ValueError("The length of the Knabbel doesn't coincide with the dimensions of G")
-        else:
-            p_vector = Matrix([[int(char)] for char in i])
-            codemessage = G_T * p_vector
-            codemessages.append(codemessage)
-    return codemessages
+    for codemessage in codemessages:
+        vector = H * codemessage
+        if not np.all(vector.vorm == 0):
+            codemessage = correct(codemessage)   # def correct moet nog geschreven
+        receivednibble = R * codemessage
+        allnibbles.append(receivednibble)
+
+    receivedmessage = convert_to_string(allnibbles)  # def convert_to_string nog schrijven
+    return receivedmessage
+
+#dit is wat de Harvard filmpjes guy doet om de code goed importeerbaar te maken en later unit tests te kunnen draaien
+if __name__ == "__main__":
+    main()
 
 """
 def MultofMWithNibble():
