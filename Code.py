@@ -56,6 +56,12 @@ class Matrix:
                     resultaat.vorm[i][j] = som % 2
             return resultaat
 
+        elif isinstance(other,list):
+            if len(other) != self.kolommen:
+                raise ValueError("The matrix and list have the wrong sizes")
+            temp_vector = Matrix([[int(x) % 2] for x in other])
+            return self * temp_vector
+        
         #scalar multiplication for ints and floats
         elif isinstance(other, int):
             resultaat = Matrix(np.zeros((self.rijen, self.kolommen),dtype=int))
