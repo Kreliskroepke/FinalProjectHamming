@@ -9,7 +9,7 @@ def main():
 
 class Matrix:
     def __init__(self, vorm):
-        self.vorm = np.array(vorm)
+        self.vorm = vorm
         self.rijen = len(vorm)
         self.kolommen = len(vorm[0])
     
@@ -34,7 +34,7 @@ class Matrix:
                 for i in range(self.rijen):
                     #for all columns
                     for j in range(self.kolommen):
-                        result.vorm[i][j] = (self.vorm[i][j] + other.vorm[i][j]) % 2
+                        result.vorm[i][j] = (self.vorm[i][j] + other.vorm[i][j]) #% 2
             return result
         else:
             raise ValueError("The matrix can't be added due to a wrong type")
@@ -43,10 +43,10 @@ class Matrix:
     def __mul__(self, other):
         if isinstance(other, Matrix):
             #Columns of A must match the rows of B
-            if self.vorm.shape[1] != other.vorm.shape[0]:
+            if self.kolommen != other.rijen:
                 raise ValueError("The matrices have the wrong sizes")
             else:
-                resultaat = Matrix(np.zeros((self.rijen, other.kolommen),dtype=int))
+                resultaat = Matrix(self.nulmatrix_maker(self.rijen, other.kolommen))
 
             for i in range(self.rijen):
                 for j in range(other.kolommen):
@@ -65,13 +65,13 @@ class Matrix:
         
         #scalar multiplication for ints and floats
         elif isinstance(other, int):
-            resultaat = Matrix(np.zeros((self.rijen, self.kolommen),dtype=int))
+            resultaat = Matrix(self.nulmatrix_maker(self.kolommen, self.rijen))
             for i in range(self.rijen):
                 for j in range(self.kolommen):
                     resultaat.vorm[i][j] = (self.vorm[i][j] * other) % 2
             return resultaat
         elif isinstance(other, float): 
-            resultaat = Matrix(np.zeros((self.rijen, self.kolommen),dtype=int))
+            resultaat = Matrix(self.nulmatrix_maker(self.kolommen, self.rijen))
             for i in range(self.rijen):
                 for j in range(self.kolommen):
                     resultaat.vorm[i][j] = (self.vorm[i][j] * other) % 2
@@ -85,7 +85,7 @@ class Matrix:
         return self.__mul__(other)
     
     def transpose(self):
-        resultaat = Matrix(np.zeros((self.kolommen, self.rijen),dtype=int))
+        resultaat = Matrix(self.nulmatrix_maker(self.rijen, self.kolommen))
 
         for i in range(self.kolommen):
             for j in range(self.rijen):
@@ -114,7 +114,7 @@ class Matrix:
             nulmatrix.append(extrarow)
         
         return nulmatrix
-
+        
 #Standard Gen matrix from Wikipedia, voor nu global variable, wordt class variable oid
 G = Matrix([
     [1, 1, 1, 0, 0, 0, 0],
