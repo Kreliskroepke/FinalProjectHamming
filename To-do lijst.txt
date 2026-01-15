@@ -12,7 +12,7 @@ MADELIEF: correct, random_storing
 AFGEMAAKT DOOR:
 ---------------------------------------------
 NICKY: pseudocode, parity, nulmatrixgen
-CORRIE: binaryconvert, encode
+CORRIE: binaryconvert, encode, binary_to_string
 MADELIEF: 
 -------------------------------------------
 
