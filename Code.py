@@ -103,7 +103,7 @@ class Matrix:
             parity_matrix.append(kolom)
         return Matrix(parity_matrix).transpose()
 
-    @staticfunction
+    @staticmethod
     def nulmatrix_maker(n,k):
         n=int(n) #n is kolom
         k=int(k) #k is rij
