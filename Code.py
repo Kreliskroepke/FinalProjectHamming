@@ -169,6 +169,25 @@ def decode(codemessages):
     receivedmessage = convert_to_string(allnibbles)  # def convert_to_string nog schrijven
     return receivedmessage
 
+#return the knabbels to strings of binary
+def convert_to_string(allknabbels):
+    decodedmessage = ""
+    tempmessage = ""
+    binarymessage = ""
+    for i in range(len(allknabbels)):
+        for j in range(len(allknabbels[i])):
+            binarymessage += str(allknabbels[i][j])
+    
+    for char in binarymessage:
+        tempmessage += char
+        if len(tempmessage) == 8:
+            ascii_value = int(tempmessage, 2)
+            chara = chr(ascii_value)
+            decodedmessage += chara
+            tempmessage = ""
+            continue
+    return decodedmessage
+    
 #dit is wat de Harvard filmpjes guy doet om de code goed importeerbaar te maken en later unit tests te kunnen draaien
 if __name__ == "__main__":
     main()
