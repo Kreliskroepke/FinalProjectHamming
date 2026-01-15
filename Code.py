@@ -168,7 +168,29 @@ def decode(codemessages):
 
     receivedmessage = convert_to_string(allnibbles)  # def convert_to_string nog schrijven
     return receivedmessage
-
+ #done   
+def correct(codemessage, G):
+    H = G.parity() 
+    error_position = position(H*codemessage)
+    
+    if codemessage[error_position-1]==0:
+        codemessage[error_position-1]=1
+    else:
+        codemessage[error_position-1]=0
+    
+    if position(H*codemessage) != 0:
+        raise ValueError("The message has 2 in one letter")
+    else:
+        return codemessage
+    
+#done
+def position(vector):
+    #vector als [0,0,0]
+    num = vector[0]
+    for i in vector:
+        num = num*2 + i
+    return (num)
+    
 #return the knabbels to strings of binary
 def convert_to_string(allknabbels):
     decodedmessage = ""
