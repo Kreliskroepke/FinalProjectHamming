@@ -101,6 +101,7 @@ class Matrix:
             parity_matrix.append(kolom)
         return Matrix(parity_matrix).transpose()
 
+    #we define a method to make zero-matrices, to do all matrixtransformations
     @staticmethod
     def nulmatrix_maker(n,k):
         n=int(n) #n is kolom
