@@ -170,9 +170,9 @@ def decode(codemessages):
     return receivedmessage
  #done   
 def correct(codemessage, G):
-    H = G.parity() 
+    H = Matrix(G).parity()
+    codemessage = Matrix(codemessage)
     error_position = position(H*codemessage)
-    
     if codemessage[error_position-1]==0:
         codemessage[error_position-1]=1
     else:
@@ -186,7 +186,7 @@ def correct(codemessage, G):
 #done
 def position(vector):
     #vector als [0,0,0]
-    num = vector[0]
+    num = vector[0][0]
     for i in vector:
         num = num*2 + i
     return (num)
