@@ -23,19 +23,19 @@ class Matrix:
     #define addition
     def __add__(self,other):
         if isinstance(other, Matrix):
-            if self.vorm.shape != other.vorm.shape:
+            if self.rijen != other.rijen or self.kolommen != other.kolommen:
                 #thanks stackexchange
                 raise ValueError("The matrices aren't the same size")
             else: 
                 #empty matrix with the same dimensions
-                result = np.zeros(self.vorm.shape, dtype=self.vorm.dtype)
+                result = Matrix(self.nulmatrix_maker(self.kolommen, self.rijen))
 
                 #for all rows
-                for i in range(self.vorm.shape[0]):
+                for i in range(self.rijen):
                     #for all columns
-                    for j in range(self.vorm.shape[1]):
-                        result[i,j] = (self.vorm[i,j] + other.vorm[i,j]) % 2
-            return Matrix(result)
+                    for j in range(self.kolommen):
+                        result.vorm[i][j] = (self.vorm[i][j] + other.vorm[i][j]) % 2
+            return result
         else:
             raise ValueError("The matrix can't be added due to a wrong type")
 
