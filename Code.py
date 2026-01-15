@@ -1,5 +1,3 @@
-import numpy as np
-
 def main():
     message = "hi"
     codemessages = encode(message) 
