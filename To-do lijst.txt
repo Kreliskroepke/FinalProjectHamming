@@ -4,7 +4,7 @@ Schrijf hier alle dingen die we moeten doen, kunnen aanpassen of weg moeten:
 
 FF AFBLIJVEN WANT IK WERK AAN.....:
 ---------------------------------------------
-NICKY: parity, decode,
+NICKY: decode, position
 CORRIE: 
 MADELIEF: correct, random_storing
 -------------------------------------------
@@ -37,7 +37,7 @@ o	rijen
 o	kolommen
 -	methods :
 DONE o	transpose
-DONE? o	parity : maakt van een matrix een parity check matrix (H)
+DONE o	parity : maakt van een matrix een parity check matrix (H)
 o	decoder : maakt van een matrix een decoder matrix (R)
 o	position: maakt van vector een number (bijv (1,0,1) = 101 = 5 in binary)
 -	dunder methods:
@@ -62,7 +62,7 @@ DONE >> def binary_convert()
 	divide into list with inputs length 4
 	return nibblelist (list)
 
-def decode()
+DONE? maar nog niet helemaal te testen >> def decode()
 input = codemessages (list)
 H = G.parity (matrix)
 R = G.decoder (matrix)
