@@ -26,13 +26,13 @@ class Matrix:
                 raise ValueError("The matrices aren't the same size")
             else: 
                 #empty matrix with the same dimensions
-                result = Matrix(self.nulmatrix_maker(self.kolommen, self.rijen))
+                result = Matrix(self.nulmatrix_maker(self.rijen, self.kolommen))
 
                 #for all rows
                 for i in range(self.rijen):
                     #for all columns
                     for j in range(self.kolommen):
-                        result.vorm[i][j] = (self.vorm[i][j] + other.vorm[i][j]) #% 2
+                        result.vorm[i][j] = (self.vorm[i][j] + other.vorm[i][j]) % 2
             return result
         else:
             raise ValueError("The matrix can't be added due to a wrong type")
@@ -63,13 +63,13 @@ class Matrix:
         
         #scalar multiplication for ints and floats
         elif isinstance(other, int):
-            resultaat = Matrix(self.nulmatrix_maker(self.kolommen, self.rijen))
+            resultaat = Matrix(self.nulmatrix_maker(self.rijen, self.kolommen))
             for i in range(self.rijen):
                 for j in range(self.kolommen):
                     resultaat.vorm[i][j] = (self.vorm[i][j] * other) % 2
             return resultaat
         elif isinstance(other, float): 
-            resultaat = Matrix(self.nulmatrix_maker(self.kolommen, self.rijen))
+            resultaat = Matrix(self.nulmatrix_maker(self.rijen, self.kolommen))
             for i in range(self.rijen):
                 for j in range(self.kolommen):
                     resultaat.vorm[i][j] = (self.vorm[i][j] * other) % 2
@@ -83,7 +83,7 @@ class Matrix:
         return self.__mul__(other)
     
     def transpose(self):
-        resultaat = Matrix(self.nulmatrix_maker(self.rijen, self.kolommen))
+        resultaat = Matrix(self.nulmatrix_maker(self.kolommen, self.rijen))
 
         for i in range(self.kolommen):
             for j in range(self.rijen):
@@ -101,9 +101,9 @@ class Matrix:
             parity_matrix.append(kolom)
         return Matrix(parity_matrix).transpose()
 
-    #we define a method to make zero-matrices, to do all matrixtransformations
+    #we define a method to make zero-matrices, to do all matrix-transformations
     @staticmethod
-    def nulmatrix_maker(n,k):
+    def nulmatrix_maker(k,n):
         n=int(n) #n is kolom
         k=int(k) #k is rij
     
@@ -123,18 +123,7 @@ G = Matrix([
 ])
 G_T = G.transpose()
 
-def encode(tekst):
-    codemessages = []
-    knabbellijst = binaryconvert(tekst)
-    for i in knabbellijst:
-        if G_T.kolommen != len(i):
-            raise ValueError("The length of the knabbel doesn't coincide with the dimensions of G")
-        else:
-            p_vector = Matrix([[int(char)] for char in i])
-            codemessage = G_T * p_vector
-            codemessages.append(codemessage)
-    return codemessages
-    
+#dit zit boven de encode want hij kent binaryconvert(tekst) anders niet
 #takes the initial input, and turns it into a list of nibbles
 def binaryconvert(tekst):
     nibblelist = []
@@ -147,6 +136,18 @@ def binaryconvert(tekst):
             nibble = [int(c) for c in nibble]
             nibblelist.append(nibble)
     return nibblelist
+
+def encode(tekst):
+    codemessages = []
+    knabbellijst = binaryconvert(tekst)
+    for i in knabbellijst:
+        if G_T.kolommen != len(i):
+            raise ValueError("The length of the knabbel doesn't coincide with the dimensions of G")
+        else:
+            p_vector = Matrix([[int(char)] for char in i])
+            codemessage = G_T * p_vector
+            codemessages.append(codemessage)
+    return codemessages
 
 #werkt nog niet helemaal, working on it 
 def decode(codemessages):
@@ -161,7 +162,7 @@ def decode(codemessages):
 
     for codemessage in codemessages:
         vector = H * codemessage
-        if not np.all(vector.vorm == 0):
+        if not is_zero_matrix(vector):
             codemessage = correct(codemessage)   # def correct moet nog geschreven
         receivednibble = R * codemessage
         allnibbles.append(receivednibble)
@@ -197,8 +198,8 @@ def convert_to_string(allknabbels):
     tempmessage = ""
     binarymessage = ""
     for i in range(len(allknabbels)):
-        for j in range(len(allknabbels[i])):
-            binarymessage += str(allknabbels[i][j])
+        for j in allknabbels[i].vorm:
+            binarymessage += str(row[0])
     
     for char in binarymessage:
         tempmessage += char
@@ -209,26 +210,16 @@ def convert_to_string(allknabbels):
             tempmessage = ""
             continue
     return decodedmessage
+
+#replacement of np.all() 
+def is_zero_matrix(mat):
+    for row in mat.vorm:
+        for value in row:
+            if value != 0:
+                return False
+    return True
     
 #dit is wat de Harvard filmpjes guy doet om de code goed importeerbaar te maken en later unit tests te kunnen draaien
 if __name__ == "__main__":
     main()
 
-"""
-def MultofMWithNibble():
-    #verander dit nog naar de bit waarover we het hebben, is voorbeeld; verander ook functie input
-    bleh = '0100'
-    #turn nibble into vector 4x1
-    p_vector = np.array([int(char) for char in bleh])
-    templist = []
-    
-    for i in G_T:
-        asdf = 0
-        for j in range(4):
-            #1 * first bit + 1 * second bit + 0 * third bit + 1 * fourth bit = first element of new matrix
-            asdf += (i[j] * p_vector[j])
-        templist.append(asdf % 2)
-    templist = [int(x) for x in templist]
-    templist = np.array(templist)
-    return templist
-"""
