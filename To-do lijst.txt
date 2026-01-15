@@ -11,7 +11,7 @@ MADELIEF: correct, random_storing
 
 AFGEMAAKT DOOR:
 ---------------------------------------------
-NICKY: pseudocode, parity?
+NICKY: pseudocode, parity, nulmatrixgen
 CORRIE: binaryconvert, encode
 MADELIEF: 
 -------------------------------------------
