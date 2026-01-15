@@ -126,10 +126,10 @@ G_T = G.transpose()
 
 def encode(tekst):
     codemessages = []
-    KnabbelLijst = binaryconvert(tekst)
-    for i in KnabbelLijst:
+    knabbellijst = binaryconvert(tekst)
+    for i in knabbellijst:
         if G_T.kolommen != len(i):
-            raise ValueError("The length of the Knabbel doesn't coincide with the dimensions of G")
+            raise ValueError("The length of the knabbel doesn't coincide with the dimensions of G")
         else:
             p_vector = Matrix([[int(char)] for char in i])
             codemessage = G_T * p_vector
