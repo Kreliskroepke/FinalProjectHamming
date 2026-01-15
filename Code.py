@@ -103,6 +103,18 @@ class Matrix:
             parity_matrix.append(kolom)
         return Matrix(parity_matrix).transpose()
 
+    @staticfunction
+    def nulmatrix_maker(n,k):
+        n=int(n) #n is kolom
+        k=int(k) #k is rij
+    
+        nulmatrix = []
+        for i in range(0,k):
+            extrarow = [0] * n
+            nulmatrix.append(extrarow)
+        
+        return nulmatrix
+
 #Standard Gen matrix from Wikipedia, voor nu global variable, wordt class variable oid
 G = Matrix([
     [1, 1, 1, 0, 0, 0, 0],
