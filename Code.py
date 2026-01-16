@@ -114,7 +114,7 @@ class Matrix:
             extrarow = [0] * n
             nulmatrix.append(extrarow)
         
-        return nulmatrix
+        return nulmatrix        #output is een list
         
 #Standard Gen matrix from Wikipedia, voor nu global variable, wordt class variable oid
 G = Matrix([
@@ -127,7 +127,7 @@ G_T = G.transpose()
 
 #dit zit boven de encode want hij kent binaryconvert(tekst) anders niet
 #takes the initial input, and turns it into a list of nibbles
-def binaryconvert(tekst):
+def binaryconvert(tekst):                #input = str
     nibblelist = []
     bit_base = 4 #dit moet in fase 2 afhankelijk worden van k
     
@@ -137,9 +137,9 @@ def binaryconvert(tekst):
         for nibble in nibbles:
             nibble = [int(c) for c in nibble]
             nibblelist.append(nibble)
-    return nibblelist
+    return nibblelist                    #output nibblelist = [[ints],..]
 
-def encode(tekst):
+def encode(tekst):                        #input = str
     codemessages = []
     knabbellijst = binaryconvert(tekst)
     for i in knabbellijst:
@@ -149,9 +149,9 @@ def encode(tekst):
             p_vector = Matrix([[int(char)] for char in i])
             codemessage = G_T * p_vector
             codemessages.append(codemessage)
-    return codemessages
+    return codemessages                #output codemessages = list of Matrices IS DIT HANDIG?
  
-def decode(codemessages):
+def decode(codemessages):            #input is nu list of matrices
     H = G.parity()  
     R = Matrix([  
         [0, 0, 1, 0, 0, 0, 0],
@@ -163,7 +163,7 @@ def decode(codemessages):
 
     codemessages = Random(codemessages)
     for codemessage in codemessages:
-        vector = H * Matrix([codemessage]).transpose()
+        vector = H * codemessage.transpose()
         if not is_zero_matrix(vector):
             codemessage = correct(codemessage, H)   
         receivednibble = R * codemessage
@@ -173,13 +173,13 @@ def decode(codemessages):
     return receivedmessage
 
 #done
-def Random(codemessages):
+def Random(codemessages):            #input = list of matrices, matrix kun je niet indexeren, dus deze code gaat nu niet werken
     twochanges = random.randint(0,1)    #IK HEB RANDOM.CHOICE VERVANGEN DOOR RANDOM.RANDINT ANDERS WERKT HET NIET
     
     if twochanges == 1:
         line = random.randint(-1, len(codemessages))        #moet len(codemessages)-1 zijn?
         places = random.sample(range(0,len(place)), 2)        #deze place in len(place) bestaat niet, dus error 
-        codemessages[line][places[0]] = 1 - codemessages[line][places[0]]
+        codemessages[line][places[0]] = 1 - codemessages[line][places[0]]     #KUNT GEEN MATRIX INDEXEREN, DAN MOET JE DE MATRIX.VORM GEBRUIKEN
         codemessages[line][places[1]] = 1 - codemessages[line][places[1]]
         return codemessages             #STOND GEEN RETURN
     else:
@@ -190,13 +190,13 @@ def Random(codemessages):
                 codemessage[place] = 1 - codemessage[place]
             else: 
                 continue
-        return codemessages
+        return codemessages         #output is list of matrices
 
  #done   
-def correct(codemessage, H):
-    codemessage = Matrix([codemessage].transpose())     #LIST IN LIST NODIG OM MATRIX TE MAKEN, DUS [] TOEGEVOEGD
+def correct(codemessage, H):     #input = matrix, matrix
+    codemessage = codemessage.transpose())     #LIST IN LIST NODIG OM MATRIX TE MAKEN, maar codemessage is al matrix
     error_position = position(H*codemessage)
-    codemessage[error_position-1] = 1 -codemessage[error_position-1]
+    codemessage.vorm[error_position-1] = 1 -codemessage.vorm[error_position-1] #matrix indexeren kan niet, dus .vorm toegevoegd
     
     if position(H*codemessage) != 0:
         raise ValueError("The message has 2 in one letter")
@@ -204,21 +204,21 @@ def correct(codemessage, H):
         return codemessage
     
 #done
-def position(vector):
+def position(vector):     #input = matrix
     #vector als [0,0,0]
-    num = vector[0][0]
-    for i in vector:
+    num = vector.vorm[0][0]    #je kunt matrix niet indiceren, dus heb er vector.vorm van gemaakt
+    for i in vector:        #i is een list, geen bit, dus dit gaat niet goed nu
         num = num*2 + i
     return (num)
     
 #return the knabbels to strings of binary
-def convert_to_string(allknabbels):
+def convert_to_string(allknabbels):        #input = allknabbels is list met matrices
     decodedmessage = ""
     tempmessage = ""
     binarymessage = ""
     for i in range(len(allknabbels)):
         for j in allknabbels[i].vorm:
-            binarymessage += str(row[0])        #WAT IS ROW?
+            binarymessage += str(row[0])        #WAT IS ROW, moet j row zijn?
     
     for char in binarymessage:
         tempmessage += char
@@ -228,10 +228,10 @@ def convert_to_string(allknabbels):
             decodedmessage += chara
             tempmessage = ""
             continue
-    return decodedmessage
+    return decodedmessage        #output = nu lege string volgens mij?
 
 #replacement of np.all() 
-def is_zero_matrix(mat):
+def is_zero_matrix(mat):        #input= matrix
     for row in mat.vorm:
         for value in row:
             if value != 0:
