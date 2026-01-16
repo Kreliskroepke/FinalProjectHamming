@@ -150,11 +150,10 @@ def encode(tekst):
             codemessage = G_T * p_vector
             codemessages.append(codemessage)
     return codemessages
-
-#werkt nog niet helemaal, working on it 
+ 
 def decode(codemessages):
-    H = G.parity()                 # ik moet dit nog even goed checken
-    R = Matrix([                   # R wordt nog G.decoder 
+    H = G.parity()  
+    R = Matrix([  
         [0, 0, 1, 0, 0, 0, 0],
         [0, 0, 0, 0, 1, 0, 0],
         [0, 0, 0, 0, 0, 1, 0],
@@ -164,30 +163,30 @@ def decode(codemessages):
 
     codemessages = Random(codemessages)
     for codemessage in codemessages:
-        vector = H * codemessage
+        vector = H * Matrix([codemessage]).transpose()
         if not is_zero_matrix(vector):
-            codemessage = correct(codemessage, H)   # def correct moet nog geschreven
+            codemessage = correct(codemessage, H)   
         receivednibble = R * codemessage
         allnibbles.append(receivednibble)
 
-    receivedmessage = convert_to_string(allnibbles)  # def convert_to_string nog schrijven
+    receivedmessage = convert_to_string(allnibbles)  
     return receivedmessage
 
 #done
 def Random(codemessages):
-    twochanges = random.choice(0,1)
+    twochanges = random.randint(0,1)    #IK HEB RANDOM.CHOICE VERVANGEN DOOR RANDOM.RANDINT ANDERS WERKT HET NIET
     
     if twochanges == 1:
-        line = random.randint(-1, len(codemessages))
-        places = random.sample(range(0,len(place)), 2)
+        line = random.randint(-1, len(codemessages))        #moet len(codemessages)-1 zijn?
+        places = random.sample(range(0,len(place)), 2)        #deze place in len(place) bestaat niet, dus error 
         codemessages[line][places[0]] = 1 - codemessages[line][places[0]]
         codemessages[line][places[1]] = 1 - codemessages[line][places[1]]
-        
+        return codemessages             #STOND GEEN RETURN
     else:
         for codemessage in codemessages:
-            changes = random.choice(0,1)
+            changes = random.randint(0,1)          #IK HEB RANDOM.CHOICE VERVANGEN DOOR RANDOM.RANDINT ANDERS WERKT HET NIET
             if changes == 1:
-                place = random.randint(-1, len(k))
+                place = random.randint(-1, len(k))    #WAT IS K? IS DAT LEN(CODEMESSAGE)?
                 codemessage[place] = 1 - codemessage[place]
             else: 
                 continue
@@ -195,7 +194,7 @@ def Random(codemessages):
 
  #done   
 def correct(codemessage, H):
-    codemessage = Matrix(codemessage)
+    codemessage = Matrix([codemessage].transpose())     #LIST IN LIST NODIG OM MATRIX TE MAKEN, DUS [] TOEGEVOEGD
     error_position = position(H*codemessage)
     codemessage[error_position-1] = 1 -codemessage[error_position-1]
     
@@ -219,7 +218,7 @@ def convert_to_string(allknabbels):
     binarymessage = ""
     for i in range(len(allknabbels)):
         for j in allknabbels[i].vorm:
-            binarymessage += str(row[0])
+            binarymessage += str(row[0])        #WAT IS ROW?
     
     for char in binarymessage:
         tempmessage += char
