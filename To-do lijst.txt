@@ -4,16 +4,16 @@ Schrijf hier alle dingen die we moeten doen, kunnen aanpassen of weg moeten:
 
 FF AFBLIJVEN WANT IK WERK AAN.....:
 ---------------------------------------------
-NICKY: decode, position
+NICKY: decode
 CORRIE: np.all
-MADELIEF: correct, random_storing
+MADELIEF: random_storing
 -------------------------------------------
 
 AFGEMAAKT DOOR:
 ---------------------------------------------
 NICKY: pseudocode, parity, nulmatrixgen
 CORRIE: binaryconvert, encode, binary_to_string
-MADELIEF: 
+MADELIEF: correct, position
 -------------------------------------------
 
 
