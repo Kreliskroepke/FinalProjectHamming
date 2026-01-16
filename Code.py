@@ -194,7 +194,7 @@ def Random(codemessages):            #input = list of matrices, matrix kun je ni
 
  #done   
 def correct(codemessage, H):     #input = matrix, matrix
-    codemessage = codemessage.transpose())     #LIST IN LIST NODIG OM MATRIX TE MAKEN, maar codemessage is al matrix
+    codemessage = codemessage.transpose())     #codemessage is al matrix
     error_position = position(H*codemessage)
     codemessage.vorm[error_position-1] = 1 -codemessage.vorm[error_position-1] #matrix indexeren kan niet, dus .vorm toegevoegd
     
