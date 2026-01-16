@@ -1,5 +1,9 @@
 -------------------------------------------------------------------------------
 Schrijf hier alle dingen die we moeten doen, kunnen aanpassen of weg moeten:
+
+comments toevoegen en verbeteren voor verduidelijking code 
+programma visible zetten 
+fase 2 en fase 3
 -------------------------------------------------------------------------------
 
 FF AFBLIJVEN WANT IK WERK AAN.....:
