@@ -1,3 +1,5 @@
+import random
+
 def main():
     message = "hi"
     codemessages = encode(message) 
@@ -160,24 +162,42 @@ def decode(codemessages):
     ])
     allnibbles = []
 
+    codemessages = Random(codemessages)
     for codemessage in codemessages:
         vector = H * codemessage
         if not is_zero_matrix(vector):
-            codemessage = correct(codemessage)   # def correct moet nog geschreven
+            codemessage = correct(codemessage, H)   # def correct moet nog geschreven
         receivednibble = R * codemessage
         allnibbles.append(receivednibble)
 
     receivedmessage = convert_to_string(allnibbles)  # def convert_to_string nog schrijven
     return receivedmessage
+
+#done
+def Random(codemessages):
+    twochanges = random.choice(0,1)
+    
+    if twochanges == 1:
+        line = random.randint(-1, len(codemessages))
+        places = random.sample(range(0,len(place)), 2)
+        codemessages[line][places[0]] = 1 - codemessages[line][places[0]]
+        codemessages[line][places[1]] = 1 - codemessages[line][places[1]]
+        
+    else:
+        for codemessage in codemessages:
+            changes = random.choice(0,1)
+            if changes == 1:
+                place = random.randint(-1, len(k))
+                codemessage[place] = 1 - codemessage[place]
+            else: 
+                continue
+        return codemessages
+
  #done   
-def correct(codemessage, G):
-    H = Matrix(G).parity()
+def correct(codemessage, H):
     codemessage = Matrix(codemessage)
     error_position = position(H*codemessage)
-    if codemessage[error_position-1]==0:
-        codemessage[error_position-1]=1
-    else:
-        codemessage[error_position-1]=0
+    codemessage[error_position-1] = 1 -codemessage[error_position-1]
     
     if position(H*codemessage) != 0:
         raise ValueError("The message has 2 in one letter")
