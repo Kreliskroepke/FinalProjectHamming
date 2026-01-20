@@ -2,21 +2,27 @@ from decoderfunctions import * #contains: decode, correct, position, convert_to_
 from encoderfunctions import * #contains: encode, binaryconvert
 from errorCreation import Random
 from Matrixclass import Matrix
+from matrixmakers import * #contains: G_matrix, H_matrix, R_matrix
 from Window import windowmaker
-
-G = Matrix([
-    [1, 1, 1, 0, 0, 0, 0],
-    [1, 0, 0, 1, 1, 0, 0],
-    [0, 1, 0, 1, 0, 1, 0],
-    [1, 1, 0, 1, 0, 0, 1]
-])
-G_T = G.transpose()
 
 def main():
     message = "hi"
-    codemessages = encode(message) 
+    r = 3 #aantal parity bits
+
+    G = G_matrix(r)
+    G_t = G.transpose()
+    H = H_matrix(r)
+    R = R_matrix(r)
+    
+    codemessages = encode(message, G_t) 
     codemessages = Random(codemessages) 
-    receivedmessage = decode(codemessages)
+    receivedmessage = decode(codemessages, H, R)
     return receivedmessage
 
 main()
+
+"""
+#dit is wat de Harvard filmpjes guy doet om de code goed importeerbaar te maken en later unit tests te kunnen draaien
+if __name__ == "__main__":
+    main()
+"""
