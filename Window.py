@@ -3,13 +3,13 @@ from encoder import *
 from decoder import *
 from random import *
 
-# --- External functions ---
+"""
 def encode(text):
     return text[::-1]
 
 def decode(text):
     return text[::-1]
-
+"""
 
 def run_encode():
     """This takes a string, and returns the encoded message in the window"""
