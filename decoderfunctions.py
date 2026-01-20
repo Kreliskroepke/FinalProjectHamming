@@ -33,7 +33,7 @@ def correct(codemessage, H):     #input = matrix, matrix
 
 #return the knabbels to strings of binary
 def convert_to_string(allknabbels):        #input = allknabbels is list met matrices
-    """converts binary into text"""" 
+    """converts binary into text""" 
     decodedmessage = ""
     tempmessage = ""
     binarymessage = ""
