@@ -27,7 +27,7 @@ def correct(codemessage, H):
     if position(H*codemessage) != 0:
         raise ValueError("The message has 2 errors in one letter")
     else:
-
+        return codemessage
 
 #return the knabbels to strings of binary
 def convert_to_string(allknabbels):        #input = allknabbels is list met matrices
