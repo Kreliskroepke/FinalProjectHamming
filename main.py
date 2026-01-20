@@ -1,7 +1,7 @@
-from decoderfunctions import * #decode, correct, position, convert_to_string, is_zero_matrix
-from encoderfunctions import * #encode, binaryconvert
-from errorCreation import * #Random
-from Matrixclass import * #Matrix
+from decoderfunctions import * #contains: decode, correct, position, convert_to_string, is_zero_matrix
+from encoderfunctions import * #contains: encode, binaryconvert
+from errorCreation import Random
+from Matrixclass import Matrix
 
 G = Matrix([
     [1, 1, 1, 0, 0, 0, 0],
