@@ -1,4 +1,4 @@
-lass Matrix:
+class Matrix:
     def __init__(self, vorm):
         self.vorm = vorm
         self.rijen = len(vorm)
