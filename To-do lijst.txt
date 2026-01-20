@@ -8,7 +8,7 @@ fase 2 en fase 3
 
 FF AFBLIJVEN WANT IK WERK AAN.....:
 ---------------------------------------------
-NICKY: probeer G te maken obv parity bits
+NICKY: probeer G te maken obv parity bits, parity code!!
 CORRIE: menu popup ipv terminal
 MADELIEF: 
 -------------------------------------------
