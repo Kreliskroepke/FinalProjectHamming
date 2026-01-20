@@ -28,7 +28,7 @@ def H_matrix(r=3):
     H = Matrix.nulmatrix_maker(r,n)
     for column in range(1,n+1):
         bits = format(column, f"0{r}b")
-        #draait de bit om zodat de matrix goed komt
+        #draait de bit om zodat de matrix goed komt, deze code kan vast handiger, maar dit werkt...
         bits = bits[::-1] 
         for row in range(r):
             H[row][column-1] = int(bits[row])
