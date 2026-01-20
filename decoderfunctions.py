@@ -38,8 +38,8 @@ def convert_to_string(allknabbels):        #input = allknabbels is list met matr
     tempmessage = ""
     binarymessage = ""
     for i in range(len(allknabbels)):
-        for j in allknabbels[i].vorm:
-            binarymessage += str(row[0])        #WAT IS ROW, moet j row zijn?
+        for row in allknabbels[i].vorm:
+            binarymessage += str(row[0])
     
     for char in binarymessage:
         tempmessage += char
