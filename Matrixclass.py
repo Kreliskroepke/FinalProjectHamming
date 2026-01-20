@@ -76,6 +76,7 @@ class Matrix:
         return self.__mul__(other)
     
     def transpose(self):
+        """takes matrix and returns transposed matrix"""
         resultaat = Matrix(self.nulmatrix_maker(self.kolommen, self.rijen))
 
         for i in range(self.kolommen):
@@ -85,6 +86,7 @@ class Matrix:
 
     #method om van G-matrix de parity matrix H te maken
     def parity(self): 
+        """take G matrix and create parity matrix H"""
         parity_matrix = []
         bit_base = self.kolommen - self.rijen #afhankelijk van r, niet van n
         getallen = self.kolommen 
@@ -94,9 +96,9 @@ class Matrix:
             parity_matrix.append(kolom)
         return Matrix(parity_matrix).transpose()
 
-    #we define a method to make zero-matrices, to do all matrix-transformations
     @staticmethod
     def nulmatrix_maker(k,n):
+        """static function to replace np.zeros, used for matrix transformations"""
         n=int(n) #n is kolom
         k=int(k) #k is rij
     
