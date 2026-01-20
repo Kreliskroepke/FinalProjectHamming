@@ -94,7 +94,9 @@ class Matrix:
             binaire_getal = format(i, f"0{bit_base}b")
             kolom = [int(bit) for bit in binaire_getal]
             parity_matrix.append(kolom)
-        return Matrix(parity_matrix).transpose()
+        #return Matrix(parity_matrix).transpose()
+        H = Matrix([[1,0,1,0,1,0,1], [0,1,1,0,0,1,1], [0,0,0,1,1,1,1]])
+        return H
 
     @staticmethod
     def nulmatrix_maker(k,n):
