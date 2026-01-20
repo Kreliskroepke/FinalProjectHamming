@@ -8,14 +8,14 @@ fase 2 en fase 3
 
 FF AFBLIJVEN WANT IK WERK AAN.....:
 ---------------------------------------------
-NICKY: probeer G te maken obv parity bits, parity code!!
+NICKY: 
 CORRIE: menu popup ipv terminal
 MADELIEF: 
 -------------------------------------------
 
 AFGEMAAKT DOOR:
 ---------------------------------------------
-NICKY: pseudocode, parity, nulmatrixgen, decode
+NICKY: pseudocode, parity, nulmatrixgen, decode, matrixmakers 
 CORRIE: binaryconvert, encode, binary_to_string
 MADELIEF: correct, position, Random
 -------------------------------------------
