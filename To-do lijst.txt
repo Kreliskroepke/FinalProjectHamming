@@ -21,6 +21,7 @@ MADELIEF: correct, position, Random
 -------------------------------------------
 
 
+
 -----------------------------------
 Fase 1 - Een werkende basiscode
 ------------------------------------
@@ -138,6 +139,10 @@ In verslag werken aan
 ------------------------------
 Fase 3 - Afmaken
 ----------------------------
+
+-seperate files voor functies, class, etc
+-importeer op alfabetische volgorde
+-voeg docstrings toe aan functies
 
 Testen en eventueel verbeteren code
 time complexity als we tijd over hebben
