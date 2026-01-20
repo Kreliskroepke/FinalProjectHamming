@@ -1,3 +1,5 @@
+from Matrixclass import Matrix
+
 def binaryconvert(tekst):                #input = str
     """takes text as input and returns a list of binary messages"""
     nibblelist = []
