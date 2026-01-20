@@ -1,9 +1,7 @@
 import random
 #verbeterde versie
 def Random(codemessages): 
-    """ 
-    simulates errors in code that happen because of noise.
-    """
+    """simulates errors in code that happen because of noise"""
     # 1 in 10 accurence of 2 mistakes
     twochanges = random.randint(0,9)   
 
@@ -34,4 +32,4 @@ def Random(codemessages):
                 continue
 
         # output list of matrices 
-        return codemessages        
+        return codemessages
