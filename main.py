@@ -1,6 +1,6 @@
 from decoderfunctions import * #contains: decode, correct, position, convert_to_string, is_zero_matrix
 from encoderfunctions import * #contains: encode, binaryconvert
-from errorCreation import Random
+from errorCreation import random
 from Matrixclass import Matrix
 from matrixmakers import * #contains: G_matrix, H_matrix, R_matrix
 from Window import windowmaker
@@ -15,7 +15,7 @@ def main():
     R = R_matrix(r)
     
     codemessages = encode(message, G_t) 
-    codemessages = Random(codemessages) 
+    codemessages = random(codemessages) 
     receivedmessage = decode(codemessages, H, R)
     return receivedmessage
 
