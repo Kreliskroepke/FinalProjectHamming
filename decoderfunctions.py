@@ -49,15 +49,8 @@ def convert_to_string(allknabbels):        #input = allknabbels is list met matr
             continue
     return decodedmessage        #output = nu lege string volgens mij?
 
-def decode(codemessages):            #input is nu list of matrices
+def decode(codemessages, H, R):            #input is nu list of matrices
     """takes list of codemessages, checks errors, corrects and translates to text, returns text message"""
-    H = G.parity()  
-    R = Matrix([  
-        [0, 0, 1, 0, 0, 0, 0],
-        [0, 0, 0, 0, 1, 0, 0],
-        [0, 0, 0, 0, 0, 1, 0],
-        [0, 0, 0, 0, 0, 0, 1]
-    ])
     allnibbles = []
 
     codemessages = codemessages
