@@ -1,6 +1,6 @@
 import random
 #verbeterde versie
-def random_error(codemessages): #hoofdletter maakt het class, random overschrijft de andere random, dus heb m random_error genoemd en aangepast
+def random_error(codemessages): #hoofdletter maakt het class, random overschrijft de andere random, dus heb m random_error genoemd en aangepast in main
     """simulates errors in code that happen because of noise"""
     # 1 in 10 accurence of 2 mistakes
     twochanges = random.randint(0,9)   
@@ -8,7 +8,7 @@ def random_error(codemessages): #hoofdletter maakt het class, random overschrijf
     #when 2 mistakes accure somewhere in the list of codes 
     if twochanges == 0:
         #locatie willekeurig kiezen 
-        codemessage = codemessages[random.randint(0, len(codemessages)-1)]     
+        codemessage = codemessages[random.randint(0, len(codemessages)-1)]
         places = random.sample(range(0,codemessage.kolommen), 2) 
 
         #aanpassen op 2 plaatsen
