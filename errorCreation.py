@@ -1,6 +1,6 @@
 import random
 #verbeterde versie
-def Random(codemessages): 
+def random(codemessages): 
     """simulates errors in code that happen because of noise"""
     # 1 in 10 accurence of 2 mistakes
     twochanges = random.randint(0,9)   
