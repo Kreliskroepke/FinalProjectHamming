@@ -1,5 +1,6 @@
+from Matrixclass import Matrix
 import random
-#verbeterde versie
+
 def random_error(codemessages): #hoofdletter maakt het class, random overschrijft de andere random, dus heb m random_error genoemd en aangepast in main
     """simulates errors in code that happen because of noise"""
     # 1 in 10 accurence of 2 mistakes
