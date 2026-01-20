@@ -84,20 +84,6 @@ class Matrix:
                 resultaat.vorm[i][j] = self.vorm[j][i]
         return resultaat
 
-    #method om van G-matrix de parity matrix H te maken
-    def parity(self): 
-        """take G matrix and create parity matrix H"""
-        parity_matrix = []
-        bit_base = self.kolommen - self.rijen #afhankelijk van r, niet van n
-        getallen = self.kolommen 
-        for i in range(1,getallen+1):
-            binaire_getal = format(i, f"0{bit_base}b")
-            kolom = [int(bit) for bit in binaire_getal]
-            parity_matrix.append(kolom)
-        #return Matrix(parity_matrix).transpose()
-        H = Matrix([[1,0,1,0,1,0,1], [0,1,1,0,0,1,1], [0,0,0,1,1,1,1]])
-        return H
-
     @staticmethod
     def nulmatrix_maker(k,n):
         """static function to replace np.zeros, used for matrix transformations"""
