@@ -140,7 +140,7 @@ In verslag werken aan
 Fase 3 - Afmaken
 ----------------------------
 
--seperate files voor functies, class, etc
+-seperate files voor functies, class, etc (noem de file die gerunt moet worden main.py)
 -importeer op alfabetische volgorde
 -voeg docstrings toe aan functies
 
