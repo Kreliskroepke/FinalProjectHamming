@@ -2,6 +2,7 @@ from decoderfunctions import * #contains: decode, correct, position, convert_to_
 from encoderfunctions import * #contains: encode, binaryconvert
 from errorCreation import Random
 from Matrixclass import Matrix
+from Window import * #contains: Window that pops up
 
 G = Matrix([
     [1, 1, 1, 0, 0, 0, 0],
