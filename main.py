@@ -18,3 +18,5 @@ def main():
     codemessages = Random(codemessages) 
     receivedmessage = decode(codemessages)
     return receivedmessage
+
+main()
