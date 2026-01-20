@@ -1,20 +1,37 @@
 import random
-
-def Random(codemessages):            #input = list of matrices, matrix kun je niet indexeren, dus deze code gaat nu niet werken
+#verbeterde versie
+def Random(codemessages): 
+    """ 
+    simulates errors in code that happen because of noise.
+    """
+    # 1 in 10 accurence of 2 mistakes
     twochanges = random.randint(0,9)   
-    
+
+    #when 2 mistakes accure somewhere in the list of codes 
     if twochanges == 0:
+        #locatie willekeurig kiezen 
         codemessage = codemessages[random.randint(0, len(codemessages)-1)]     
-        places = random.sample(range(0,codemessage.kolommen), 2)  
+        places = random.sample(range(0,codemessage.kolommen), 2) 
+
+        #aanpassen op 2 plaatsen
         codemessage.vorm[0][places[0]] = 1 - codemessage.vorm[0][places[0]]     
         codemessage.vorm[0][places[1]] = 1 - codemessage.vorm[0][places[1]]
-        return codemessages             
+        return codemessages 
+
+    #when only 1 and 0 mistakes accure in each code
     else:
-        for codemessage in codemessages:
-            changes = random.randint(0,1)          
+        # determine if 1 or 0 mistakes happen per code
+        for codemessage in codemessages: 
+            changes = random.randint(0,1)  
+
+            #change bit for 1 mistake 
             if changes == 1:
                 place = random.randint(0, codemessage.kolommen-1)    
                 codemessage.vorm[0][place] = 1 - codemessage.vorm[0][place]
+                
+            # for no mistake in code 
             else: 
                 continue
-        return codemessages         #output is list of matrices
+
+        # output list of matrices 
+        return codemessages        
