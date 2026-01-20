@@ -1,3 +1,5 @@
+from Matrixclass import Matrix
+
 def is_zero_matrix(mat):        #input= matrix
     """replaces np.all"""
     for row in mat.vorm:
