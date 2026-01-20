@@ -1,14 +1,19 @@
+from decoderfunctions import * #decode, correct, position, convert_to_string, is_zero_matrix
+from encoderfunctions import * #encode, binaryconvert
+from errorCreation import * #Random
+from Matrixclass import * #Matrix
+
+G = Matrix([
+    [1, 1, 1, 0, 0, 0, 0],
+    [1, 0, 0, 1, 1, 0, 0],
+    [0, 1, 0, 1, 0, 1, 0],
+    [1, 1, 0, 1, 0, 0, 1]
+])
+G_T = G.transpose()
+
 def main():
     message = "hi"
     codemessages = encode(message) 
-    #verstuur/test de code door walkie_talkie(codemessages) 
+    codemessages = Random(codemessages) 
     receivedmessage = decode(codemessages)
     return receivedmessage
-
-    G = Matrix([
-        [1, 1, 1, 0, 0, 0, 0],
-        [1, 0, 0, 1, 1, 0, 0],
-        [0, 1, 0, 1, 0, 1, 0],
-        [1, 1, 0, 1, 0, 0, 1]
-    ])
-    G_T = G.transpose()
