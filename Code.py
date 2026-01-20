@@ -177,16 +177,16 @@ def Random(codemessages):            #input = list of matrices, matrix kun je ni
     twochanges = random.randint(0,1)    #IK HEB RANDOM.CHOICE VERVANGEN DOOR RANDOM.RANDINT ANDERS WERKT HET NIET
     
     if twochanges == 1:
-        line = random.randint(-1, len(codemessages))        #moet len(codemessages)-1 zijn?
+        line = random.randint(0, len(codemessages)-1)        #moet len(codemessages)-1 zijn?
         places = random.sample(range(0,len(place)), 2)        #deze place in len(place) bestaat niet, dus error 
-        codemessages[line][places[0]] = 1 - codemessages[line][places[0]]     #KUNT GEEN MATRIX INDEXEREN, DAN MOET JE DE MATRIX.VORM GEBRUIKEN
-        codemessages[line][places[1]] = 1 - codemessages[line][places[1]]
-        return codemessages             #STOND GEEN RETURN
+        codemessages.vorm[line][places[0]] = 1 - codemessages.move[line][places[0]]     #KUNT GEEN MATRIX INDEXEREN, DAN MOET JE DE MATRIX.VORM GEBRUIKEN
+        codemessages.vorm[line][places[1]] = 1 - codemessages.move[line][places[1]]
+        return codemessages             
     else:
         for codemessage in codemessages:
-            changes = random.randint(0,1)          #IK HEB RANDOM.CHOICE VERVANGEN DOOR RANDOM.RANDINT ANDERS WERKT HET NIET
+            changes = random.randint(0,1)          
             if changes == 1:
-                place = random.randint(-1, len(k))    #WAT IS K? IS DAT LEN(CODEMESSAGE)?
+                place = random.randint(0, len(codemessage)-1)    #WAT IS K? IS DAT LEN(CODEMESSAGE)?
                 codemessage[place] = 1 - codemessage[place]
             else: 
                 continue
@@ -196,10 +196,10 @@ def Random(codemessages):            #input = list of matrices, matrix kun je ni
 def correct(codemessage, H):     #input = matrix, matrix
     codemessage = codemessage.transpose())     #codemessage is al matrix
     error_position = position(H*codemessage)
-    codemessage.vorm[error_position-1] = 1 -codemessage.vorm[error_position-1] #matrix indexeren kan niet, dus .vorm toegevoegd
+    codemessage.vorm[error_position-1] = 1 -codemessage.vorm[error_position-1] 
     
     if position(H*codemessage) != 0:
-        raise ValueError("The message has 2 in one letter")
+        raise ValueError("The message has 2 errors in one letter")
     else:
         return codemessage
     
