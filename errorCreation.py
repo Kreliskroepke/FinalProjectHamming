@@ -14,8 +14,8 @@ def Random(codemessages):
         places = random.sample(range(0,codemessage.kolommen), 2) 
 
         #aanpassen op 2 plaatsen
-        codemessage.vorm[0][places[0]] = 1 - codemessage.vorm[0][places[0]]     
-        codemessage.vorm[0][places[1]] = 1 - codemessage.vorm[0][places[1]]
+        codemessage.vorm[places[0]][0] = 1 - codemessage.vorm[places[0]][0]   
+        codemessage.vorm[places[1]][0] = 1 - codemessage.vorm[places[1]][0]
         return codemessages 
 
     #when only 1 and 0 mistakes accure in each code
@@ -27,7 +27,7 @@ def Random(codemessages):
             #change bit for 1 mistake 
             if changes == 1:
                 place = random.randint(0, codemessage.kolommen-1)    
-                codemessage.vorm[0][place] = 1 - codemessage.vorm[0][place]
+                codemessage.vorm[place][0] = 1 - codemessage.vorm[place][0]
                 
             # for no mistake in code 
             else: 
