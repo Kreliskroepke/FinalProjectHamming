@@ -11,7 +11,7 @@ def binaryconvert(tekst):                #input = str
             nibblelist.append(nibble)
     return nibblelist                    #output nibblelist = [[ints],..]
 
-def encode(tekst):      #input = str
+def encode(tekst, G_t):      #input = str
     """takes a message, translates it to binary, and returns a list with codemessages"""
     codemessages = []
     knabbellijst = binaryconvert(tekst)
