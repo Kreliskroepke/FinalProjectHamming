@@ -6,28 +6,28 @@ def is_zero_matrix(mat):        #input= matrix
                 return False
     return True
 
-def position(vector):
+def position(vector):     #input = matrix
     """takes vector, returns binary number that it forms"""
-    
-    #default 
     num = 0
-    # binary number calucator
-    for i in range(0,vector.rijen-1): 
-        num = num*2 + vector.vorm[i][0]
-    return (num) 
+    for i in range(vector.rijen-1, -1, -1): 
+        num = (num*2 + vector.vorm[i][0])
+ 
+    return (num) #output = number
 
-def correct(codemessage, H):     
+def correct(codemessage, H):     #input = matrix, matrix
     """checks if message has errors and corrects them"""
 
-    #position error and fixing
+    #position error
     error_position = position(H*codemessage)
+
+    #switching bits
     codemessage.vorm[error_position-1][0] = 1-codemessage.vorm[error_position-1][0]
     
     #voor 2 fouten
     if position(H*codemessage) != 0:
         raise ValueError("The message has 2 errors in one letter")
     else:
-        return codemessage
+        return codemessage #output = matrix
 
 #return the knabbels to strings of binary
 def convert_to_string(allknabbels):        #input = allknabbels is list met matrices
