@@ -1,20 +1,20 @@
 import random
 
 def Random(codemessages):            #input = list of matrices, matrix kun je niet indexeren, dus deze code gaat nu niet werken
-    twochanges = random.randint(0,1)    #IK HEB RANDOM.CHOICE VERVANGEN DOOR RANDOM.RANDINT ANDERS WERKT HET NIET
+    twochanges = random.randint(0,9)   
     
-    if twochanges == 1:
-        line = random.randint(0, len(codemessages)-1)        #moet len(codemessages)-1 zijn?
-        places = random.sample(range(0,len(place)), 2)        #deze place in len(place) bestaat niet, dus error 
-        codemessages.vorm[line][places[0]] = 1 - codemessages.move[line][places[0]]     #KUNT GEEN MATRIX INDEXEREN, DAN MOET JE DE MATRIX.VORM GEBRUIKEN
-        codemessages.vorm[line][places[1]] = 1 - codemessages.move[line][places[1]]
+    if twochanges == 0:
+        codemessage = codemessages[random.randint(0, len(codemessages)-1)]     
+        places = random.sample(range(0,codemessage.kolommen), 2)  
+        codemessage.vorm[0][places[0]] = 1 - codemessage.vorm[0][places[0]]     
+        codemessage.vorm[0][places[1]] = 1 - codemessage.vorm[0][places[1]]
         return codemessages             
     else:
         for codemessage in codemessages:
             changes = random.randint(0,1)          
             if changes == 1:
-                place = random.randint(0, len(codemessage)-1)    #WAT IS K? IS DAT LEN(CODEMESSAGE)?
-                codemessage[place] = 1 - codemessage[place]
+                place = random.randint(0, codemessage.kolommen-1)    
+                codemessage.vorm[0][place] = 1 - codemessage.vorm[0][place]
             else: 
                 continue
         return codemessages         #output is list of matrices
