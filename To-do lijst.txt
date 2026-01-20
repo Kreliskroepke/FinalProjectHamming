@@ -9,7 +9,7 @@ fase 2 en fase 3
 FF AFBLIJVEN WANT IK WERK AAN.....:
 ---------------------------------------------
 NICKY: decode
-CORRIE: np.all
+CORRIE: menu popup ipv terminal
 MADELIEF: 
 -------------------------------------------
 
