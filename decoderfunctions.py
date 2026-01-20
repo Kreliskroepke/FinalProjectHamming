@@ -22,8 +22,13 @@ def correct(codemessage, H):     #input = matrix, matrix
     #position error
     error_position = position(H*codemessage)
 
+    """
+    >> ik denk hier nog tussen:
+       if error_position == 0:
+        return codemessage
+    """
     #switching bits
-    codemessage.vorm[error_position-1][0] = 1-codemessage.vorm[error_position-1][0]
+    codemessage.vorm[error_position-1][0] = 1-codemessage.vorm[error_position-1][0]        #klopt het dat je nu altijd de bits switcht? zie mn comment hierboven
     
     #voor 2 fouten
     if position(H*codemessage) != 0:
@@ -49,7 +54,7 @@ def convert_to_string(allknabbels):        #input = allknabbels is list met matr
             decodedmessage += chara
             tempmessage = ""
             continue
-    return decodedmessage        #output = nu lege string volgens mij?
+    return decodedmessage        #output = str
 
 def decode(codemessages, H, R):            #input is nu list of matrices
     """takes list of codemessages, checks errors, corrects and translates to text, returns text message"""
@@ -57,7 +62,7 @@ def decode(codemessages, H, R):            #input is nu list of matrices
 
     codemessages = codemessages
     for codemessage in codemessages:
-        vector = H * codemessage.transpose()
+        vector = H * codemessage
         if not is_zero_matrix(vector):
             codemessage = correct(codemessage, H)   
         receivednibble = R * codemessage
