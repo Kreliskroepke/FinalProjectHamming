@@ -18,10 +18,10 @@ def encode(tekst, G_t):      #input = str
     codemessages = []
     knabbellijst = binaryconvert(tekst)
     for i in knabbellijst:
-        if G_T.kolommen != len(i):
+        if G_t.kolommen != len(i):
             raise ValueError("The length of the knabbel doesn't coincide with the dimensions of G")
         else:
             p_vector = Matrix([[int(char)] for char in i])
-            codemessage = G_T * p_vector
+            codemessage = G_t * p_vector
             codemessages.append(codemessage)
     return codemessages                #output codemessages = list of Matrices IS DIT HANDIG?
