@@ -1,6 +1,19 @@
 import tkinter as tk
-from encoder import *
-from decoder import *
+from encoderfunctions import *
+from decoderfunctions import *
+
+"""
+Notes:
+1) ik heb even gegoogled en als ik het goed begrijp kunnen we dit heel makkelijk in main integreren door in main te zetten:
+if __name__ == "__main__":
+    windowmaker()
+dan als je main runt open je windowmaker en als we testen runt ie gewoon de code (en negeert ie window maker). dus het blijven twee aparte bestanden
+2) dan moet nog wel de windowmaker werken, haha, daarvoor moeten we: 
+- de matrixen ook hierin maken en meegeven aan encode en decode (zoals in main)
+- via log-functies kun je tussentijdse resultaten laten zien, maar dit snap ik nog niet helemaal...
+zie bijvoorbeeld: https://stackoverflow.com/questions/13318742/python-logging-to-tkinter-text-widget en https://tkdocs.com/tutorial/text.html (logging window)
+volgens mij moeten we in de codes waar we iets willen laten zien (encode, random_error, decode) een logger maken en dan in windowmaker moet er ook iets gebeuren (dat is dan volgens mij logging window)??
+"""
 
 def windowmaker():
 
