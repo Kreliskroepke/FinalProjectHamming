@@ -5,6 +5,8 @@ comments toevoegen en verbeteren voor verduidelijking code
 programma visible zetten 
 fase 2 en fase 3
 
+test verzinnen voor random_error (kan niet met assert zoals encode/decode denk ik?)
+
 -------------------------------------------------------------------------------
 
 FF AFBLIJVEN WANT IK WERK AAN.....:
