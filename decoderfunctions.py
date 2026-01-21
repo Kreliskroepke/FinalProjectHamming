@@ -22,13 +22,8 @@ def correct(codemessage, H):     #input = matrix, matrix
     #position error
     error_position = position(H*codemessage)
 
-    """
-    >> ik denk hier nog tussen:
-       if error_position == 0:
-        return codemessage
-    """
     #switching bits
-    codemessage.vorm[error_position-1][0] = 1-codemessage.vorm[error_position-1][0]        #klopt het dat je nu altijd de bits switcht? zie mn comment hierboven
+    codemessage.vorm[error_position-1][0] = 1-codemessage.vorm[error_position-1][0]
     
     #voor 2 fouten
     if position(H*codemessage) != 0:
