@@ -1,9 +1,9 @@
 from Matrixclass import Matrix
 
-def binaryconvert(tekst):                #input = str
+def binaryconvert(tekst, k=4):                #input = str
     """takes text as input and returns a list of binary messages"""
     nibblelist = []
-    bit_base = 4 #dit moet in fase 2 afhankelijk worden van k
+    bit_base = k #dit werkt nog niet voor r!=3
     
     for i in tekst:
         bits8 = format(ord(i), '08b')
@@ -16,7 +16,8 @@ def binaryconvert(tekst):                #input = str
 def encode(tekst, G_t):      #input = str
     """takes a message, translates it to binary, and returns a list with codemessages"""
     codemessages = []
-    knabbellijst = binaryconvert(tekst)
+    k = G_t.kolommen
+    knabbellijst = binaryconvert(tekst, k)
     for i in knabbellijst:
         if G_t.kolommen != len(i):
             raise ValueError("The length of the knabbel doesn't coincide with the dimensions of G")
