@@ -65,7 +65,6 @@ def Windowmaker():
     default_font = tkfont.nametofont("TkDefaultFont")
     default_font.config(family="Times New Roman", size=11)
     root.title("Hamming Code")
-    root.config(bg="#ead78d")
     root.geometry("600x450")
     root.configure(bg="#ead78d")
 
