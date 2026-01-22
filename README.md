@@ -1,4 +1,4 @@
-<img width="626" height="389" alt="image" src="https://github.com/user-attachments/assets/09508137-97ac-412d-9b01-09feedb0c4e8" /># Final Project Hamming
+# Final Project Hamming
 Programmeren voor Wiskunde Final Project
 
 ## Description
