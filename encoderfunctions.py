@@ -4,7 +4,7 @@ def binaryconvert(tekst, k=4):                #input = str
     """takes text as input and returns a list of binary messages"""
     nibblelist = []
     bit_base = k 
-    b = 2*k #2 keer de lengte van de databits
+    b = k if k > 8 else 8
     for i in tekst:
         bits = format(ord(i), f'0{b}b')
         nibbles = [bits[j:j+bit_base] for j in range(0, b, bit_base)]
