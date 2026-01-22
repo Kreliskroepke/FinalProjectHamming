@@ -3,7 +3,7 @@ from encoderfunctions import * #contains: encode, binaryconvert
 from errorCreation import random_error
 from Matrixclass import Matrix
 from matrixmakers import * #contains: G_matrix, H_matrix, R_matrix
-from Window import windowmaker
+from Window import Windowmaker
 
 def main():
     message = "hi"
