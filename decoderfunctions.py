@@ -1,7 +1,7 @@
 from Matrixclass import Matrix
 
-def is_zero_matrix(mat):        #input= matrix
-    """replaces np.all"""
+def is_zero_matrix(mat):     #input=matrix
+    """Checks if a matrix is all zero's"""
     for row in mat.vorm:
         for value in row:
             if value != 0:
@@ -14,7 +14,7 @@ def position(vector):     #input = matrix
     for i in range(vector.rijen-1, -1, -1): 
         num = (num*2 + vector.vorm[i][0])
  
-    return (num) #output = number
+    return (num)     #output = number
 
 def correct(codemessage, H):     #input = matrix, matrix
     """checks if message has errors and corrects them"""
@@ -22,17 +22,16 @@ def correct(codemessage, H):     #input = matrix, matrix
     #position error
     error_position = position(H*codemessage)
 
-    #switching bits
+    #switch the bits from 0 to 1 and vice versa
     codemessage.vorm[error_position-1][0] = 1-codemessage.vorm[error_position-1][0]
     
-    #voor 2 fouten
+    #for two mistakes:
     if position(H*codemessage) != 0:
         raise ValueError("The message has 2 errors in one letter")
     else:
-        return codemessage #output = matrix
+        return codemessage     #output = matrix
 
-#return the knabbels to strings of binary
-def convert_to_string(allknabbels):        #input = allknabbels is list met matrices
+def convert_to_string(allknabbels):     #input = allknabbels is list of matrices
     """converts binary into text""" 
     decodedmessage = ""
     tempmessage = ""
@@ -50,9 +49,9 @@ def convert_to_string(allknabbels):        #input = allknabbels is list met matr
             decodedmessage += chara
             tempmessage = ""
             continue
-    return decodedmessage        #output = str
+    return decodedmessage     #output = str
 
-def decode(codemessages, H, R):            #input is nu list of matrices
+def decode(codemessages, H, R):     #input is nu list of matrices
     """takes list of codemessages, checks errors, corrects and translates to text, returns text message"""
     allnibbles = []
 
