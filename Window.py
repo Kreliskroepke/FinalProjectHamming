@@ -16,62 +16,63 @@ dan als je main runt open je windowmaker en als we testen runt ie gewoon de code
 zie bijvoorbeeld: https://stackoverflow.com/questions/13318742/python-logging-to-tkinter-text-widget en https://tkdocs.com/tutorial/text.html (logging window)
 volgens mij moeten we in de codes waar we iets willen laten zien (encode, random_error, decode) een logger maken en dan in windowmaker moet er ook iets gebeuren (dat is dan volgens mij logging window)??
 """
+def Windowmaker():
+    
+    r = 3 #aantal parity bits
+    
+    G = G_matrix(r)
+    G_t = G.transpose()
+    H = H_matrix(r)
+    R = R_matrix(r)
 
-r = 3 #aantal parity bits
+    def run_encode():
+            """This takes a string, and returns the encoded message in the window"""
+            user_input = entry.get()
+            if not user_input.strip():
+                output_label.config(text="Please fill in a message.")
+                return
+            result = encode(user_input)
+            output_label.config(text=f"Encoded result:\n{result}")
 
-G = G_matrix(r)
-G_t = G.transpose()
-H = H_matrix(r)
-R = R_matrix(r)
+        def run_decode():
+            """This takes a string, and returns the decoded message in the window"""
+            user_input = entry.get()
+            if not user_input.strip():
+                output_label.config(text="Please fill in a message.")
+                return
+            result = decode(user_input)
+            output_label.config(text=f"Decoded result:\n{result}")
 
-def run_encode():
-        """This takes a string, and returns the encoded message in the window"""
-        user_input = entry.get()
-        if not user_input.strip():
-            output_label.config(text="Please fill in a message.")
-            return
-        result = encode(user_input)
-        output_label.config(text=f"Encoded result:\n{result}")
+        #Create popup window
+        root = tk.Tk()
+        root.title("Hamming Code")
+        root.geometry("600x450")
 
-    def run_decode():
-        """This takes a string, and returns the decoded message in the window"""
-        user_input = entry.get()
-        if not user_input.strip():
-            output_label.config(text="Please fill in a message.")
-            return
-        result = decode(user_input)
-        output_label.config(text=f"Decoded result:\n{result}")
+        #Text at top
+        title_label = tk.Label(root, text="Welcome to our Hamming en-/decoder!", font=("Arial", 11))
+        title_label.pack(pady=10)
+        expl_label = tk.Label(root, text="Give your message, and click a button.", font=("Arial", 11))
+        expl_label.pack(pady=0)
 
-    #Create popup window
-    root = tk.Tk()
-    root.title("Hamming Code")
-    root.geometry("600x450")
+        #Input field
+        entry = tk.Entry(root, width=40)
+        entry.pack(pady=5)
+    
+        #Buttons frame
+        button_frame = tk.Frame(root)
+        button_frame.pack(pady=10)
 
-    #Text at top
-    title_label = tk.Label(root, text="Welcome to our Hamming en-/decoder!", font=("Arial", 11))
-    title_label.pack(pady=10)
-    expl_label = tk.Label(root, text="Give your message, and click a button.", font=("Arial", 11))
-    expl_label.pack(pady=0)
+        encode_button = tk.Button(button_frame, text="Encode", command=run_encode)
+        encode_button.pack(side="left", padx=10)
 
-    #Input field
-    entry = tk.Entry(root, width=40)
-    entry.pack(pady=5)
-
-    #Buttons frame
-    button_frame = tk.Frame(root)
-    button_frame.pack(pady=10)
-
-    encode_button = tk.Button(button_frame, text="Encode", command=run_encode)
-    encode_button.pack(side="left", padx=10)
-
-    decode_button = tk.Button(button_frame, text="Decode", command=run_decode)
-    decode_button.pack(side="left", padx=10)
-
-    quit_button = tk.Button(button_frame, text="Quit", command=root.destroy)
-    quit_button.pack(side="bottom", pady=10)
-
-    #Output text
-    output_label = tk.Label(root, text="", wraplength=350, fg="black")
-    output_label.pack(pady=20)
-
-    root.mainloop()
+        decode_button = tk.Button(button_frame, text="Decode", command=run_decode)
+        decode_button.pack(side="left", padx=10)
+    
+        quit_button = tk.Button(button_frame, text="Quit", command=root.destroy)
+        quit_button.pack(side="bottom", pady=10)
+    
+        #Output text
+        output_label = tk.Label(root, text="", wraplength=350, fg="black")
+        output_label.pack(pady=20)
+    
+        root.mainloop()
