@@ -5,7 +5,9 @@ from main import main
 from Matrixclass import Matrix
 from matrixmakers import * #contains: G_matrix, H_matrix, R_matrix
 
-#om te gebruiken plak in terminal: py -m pytest test_hamming.py
+"""
+To use, paste the following into the terminal: py -m pytest test_hamming.py
+"""
 
 r = 3 #change r to test different Hamming codes
 G = G_matrix(r)
