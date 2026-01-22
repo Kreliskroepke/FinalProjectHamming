@@ -1,6 +1,6 @@
 from Matrixclass import Matrix
 
-def binaryconvert(tekst, k=4):                #input = str
+def binaryconvert(tekst, k=4):     #input = str
     """takes text as input and returns a list of binary messages"""
     nibblelist = []
     bit_base = k 
@@ -11,9 +11,9 @@ def binaryconvert(tekst, k=4):                #input = str
         for nibble in nibbles:
             nibble = [int(c) for c in nibble]
             nibblelist.append(nibble)
-    return nibblelist                    #output nibblelist = [[ints],..]
+    return nibblelist     #output nibblelist = [[ints],..]
 
-def encode(tekst, G_t):      #input = str
+def encode(tekst, G_t):     #input = str
     """takes a message, translates it to binary, and returns a list with codemessages"""
     codemessages = []
     k = G_t.kolommen
@@ -25,7 +25,7 @@ def encode(tekst, G_t):      #input = str
             p_vector = Matrix([[int(char)] for char in i])
             codemessage = G_t * p_vector
             codemessages.append(codemessage)
-    return codemessages                #output codemessages = list of Matrices IS DIT HANDIG?
+    return codemessages     #output codemessages = list of matrices 
 
 def readableEncoder(nibblelist):
     """This prints a string of binary in segments of 4, for window"""
