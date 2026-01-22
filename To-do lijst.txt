@@ -11,14 +11,14 @@ test verzinnen voor random_error (kan niet met assert zoals encode/decode denk i
 
 FF AFBLIJVEN WANT IK WERK AAN.....:
 ---------------------------------------------
-NICKY: unit tests
+NICKY: 
 CORRIE: menu popup ipv terminal (note van Nicky: ik heb docstringcomment in window gezet, hopelijk helpt dat...)
 MADELIEF: 
 -------------------------------------------
 
 AFGEMAAKT DOOR:
 ---------------------------------------------
-NICKY: pseudocode, parity, nulmatrixgen, decode, matrixmakers 
+NICKY: pseudocode, parity, nulmatrixgen, decode, matrixmakers, unit tests
 CORRIE: binaryconvert, encode, binary_to_string
 MADELIEF: correct, position, random_error
 -------------------------------------------
