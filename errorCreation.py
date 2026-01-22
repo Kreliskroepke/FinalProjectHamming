@@ -19,9 +19,9 @@ def random_error(codemessages): #hoofdletter maakt het class, random overschrijf
 
     #when only 1 mistake accures in each code
     else:
-        for codemessage in codemessages: 
-            place = random.randint(0, codemessage.kolommen-1)    
-            codemessage.vorm[place][0] = 1 - codemessage.vorm[place][0]
+        codemessage = random.choice(codemessages)
+        place = random.randint(0, codemessage.kolommen-1)    
+        codemessage.vorm[place][0] = 1 - codemessage.vorm[place][0]
 
         # output list of matrices 
         return codemessages
