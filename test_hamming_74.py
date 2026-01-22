@@ -7,7 +7,7 @@ from matrixmakers import * #contains: G_matrix, H_matrix, R_matrix
 
 """
 this test only works for r=3, to test values of r > 3 please use test_hamming.py
-om te gebruiken plak in terminal: py -m pytest test_hamming.py
+To use, paste the following into the terminal: py -m pytest test_hamming.py
 """
 
 r = 3 
@@ -23,7 +23,7 @@ def list_test(input_list):
     return [Matrix(m) for m in input_list]
 
 def test_encode():
-    #test hi
+    #this tests "hi"
     actual_hi = matrix_test(encode("hi", G_t))
     expected_hi = [
         [[1], [1], [0], [0], [1], [1], [0]],
@@ -33,7 +33,7 @@ def test_encode():
     ]
     assert actual_hi == expected_hi
 
-    #test roomba
+    #this tests "roomba"
     actual_roomba = matrix_test(encode("roomba", G_t))
     expected_roomba = [
         [[0], [0], [0], [1], [1], [1], [1]],
@@ -51,7 +51,7 @@ def test_encode():
     ]
     assert actual_roomba == expected_roomba
 
-    #test 0
+    #This tests "0"
     actual_zero = matrix_test(encode("0", G_t))
     expected_zero = [
         [[1], [0], [0], [0], [0], [1], [1]], 
@@ -59,7 +59,7 @@ def test_encode():
         ]
     assert actual_zero == expected_zero
 
-    #test 1+2
+    #This tests "1+2"
     actual_plus = matrix_test(encode("1+2", G_t))
     expected_plus = [
         [[1], [0], [0], [0], [0], [1], [1]], 
@@ -72,12 +72,13 @@ def test_encode():
     assert actual_plus == expected_plus
 
 def test_random_error():
+    """Test a random error"""
     assert random_error(encode("hi", G_t)) != encode("hi", G_t)
     assert random_error(encode("roomba is stuck on the carpet", G_t)) != encode("roomba is stuck on the carpet", G_t)
     assert random_error(encode("hi", G_t)) != encode("hi", G_t)
 
 def test_decode():
-    # test math
+    #This tests if the decoder gives "math"
     input_list = [
         [[1], [0], [0], [0], [0], [1], [1]], 
         [[0], [1], [0], [1], [0], [1], [0]], 
