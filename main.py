@@ -36,5 +36,5 @@ main()
 #dit is wat de Harvard filmpjes guy doet om de code goed importeerbaar te maken en later unit tests te kunnen draaien:
 
 if __name__ == "__main__":
-    main()
+    Windowmaker()
 """
