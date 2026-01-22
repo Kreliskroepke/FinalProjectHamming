@@ -1,21 +1,10 @@
 import tkinter as tk
+import tkinter.font as tkfont
 from encoderfunctions import *
 from decoderfunctions import *
 from Matrixclass import Matrix
 from matrixmakers import * #contains: G_matrix, H_matrix, R_matrix
 
-"""
-Notes:
-1) ik heb even gegoogled en als ik het goed begrijp kunnen we dit heel makkelijk in main integreren door in main te zetten:
-if __name__ == "__main__":
-    windowmaker()
-dan als je main runt open je windowmaker en als we testen runt ie gewoon de code (en negeert ie window maker). dus het blijven twee aparte bestanden
-2) dan moet nog wel de windowmaker werken, haha, daarvoor moeten we: 
-- de matrixen ook hierin maken en meegeven aan encode en decode (zoals in main)
-- via log-functies kun je tussentijdse resultaten laten zien, maar dit snap ik nog niet helemaal...
-zie bijvoorbeeld: https://stackoverflow.com/questions/13318742/python-logging-to-tkinter-text-widget en https://tkdocs.com/tutorial/text.html (logging window)
-volgens mij moeten we in de codes waar we iets willen laten zien (encode, random_error, decode) een logger maken en dan in windowmaker moet er ook iets gebeuren (dat is dan volgens mij logging window)??
-"""
 def Windowmaker():
     
     r = 3 #aantal parity bits
@@ -24,35 +13,68 @@ def Windowmaker():
     G_t = G.transpose()
     H = H_matrix(r)
     R = R_matrix(r)
+    k = G_t.kolommen
 
-    def run_encode():
-        """This takes a string, and returns the encoded message in the window"""
+    def run_code():
+        """This takes a string, and returns the result + in-betweens"""
         user_input = entry.get()
         if not user_input.strip():
-            output_label.config(text="Please fill in a message.")
+            #state="normal" maakt de textbox editable
+            output_text.config(state="normal")
+            #delete everything from row 1 char 0 to end
+            output_text.delete("1.0", tk.END)
+            #add the text at the end (if removing tk.END it broke)
+            output_text.insert(tk.END, "Please fill in a message.")
+            output_text.config(state="disabled")
             return
-        result = encode(user_input)
-        output_label.config(text=f"Encoded result:\n{result}")
+        result = tussenstappen(user_input, G_t)
+        formatted = formatting(result)
+        
+        output_text.config(state="normal")
+        output_text.delete("1.0", tk.END)
+        output_text.insert(tk.END, formatted)
+        output_text.config(state="disabled")
 
-    def run_decode():
-        """This takes a string, and returns the decoded message in the window"""
-        user_input = entry.get()
-        if not user_input.strip():
-            output_label.config(text="Please fill in a message.")
-            return
-        result = decode(user_input)
-        output_label.config(text=f"Decoded result:\n{result}")
+    def tussenstappen(a, G_t):
+        """Very slow way to get all in-between steps"""
+        binary = binaryconvert(a,k)
+        readableBinary = readableEncoder(binary)
+        encodedmessage = encode(a, G_t)
+        decodedmessage = decode(encodedmessage, H, R)
+        return(dict(YourMessageInBinary=readableBinary, EncodedMessage=encodedmessage, YourDecodedMessage=decodedmessage))
 
+    def formatting(data):
+        """This makes the text readable in the GUI"""
+        lines = []
+        lines.append("Your message in binary:")
+        lines.append(data["YourMessageInBinary"])
+        lines.append("")
+
+        lines.append("Your encoded message in a matrix:")
+        for i, block in enumerate(data["EncodedMessage"], start=1):
+            lines.append(f"{block}")
+        lines.append("")
+        lines.append("Your decoded message:")
+        lines.append(str(data["YourDecodedMessage"]))
+
+        return "\n".join(lines)
+        
     #Create popup window
     root = tk.Tk()
+    default_font = tkfont.nametofont("TkDefaultFont")
+    default_font.config(family="Times New Roman", size=11)
     root.title("Hamming Code")
+    root.config(bg="#ead78d")
     root.geometry("600x450")
+    root.configure(bg="#ead78d")
 
     #Text at top
-    title_label = tk.Label(root, text="Welcome to our Hamming en-/decoder!", font=("Arial", 11))
+    title_label = tk.Label(root, text="Welcome to our Hamming en-/decoder!")
     title_label.pack(pady=10)
-    expl_label = tk.Label(root, text="Give your message, and click a button.", font=("Arial", 11))
+    title_label.config(bg="#ead78d")
+    expl_label = tk.Label(root, text="Give your message, and click the run button.")
     expl_label.pack(pady=0)
+    expl_label.config(bg="#ead78d")
 
     #Input field
     entry = tk.Entry(root, width=40)
@@ -61,18 +83,20 @@ def Windowmaker():
     #Buttons frame
     button_frame = tk.Frame(root)
     button_frame.pack(pady=10)
+    button_frame.config(bg="#ead78d")
 
-    encode_button = tk.Button(button_frame, text="Encode", command=run_encode)
-    encode_button.pack(side="left", padx=10)
+    main_button = tk.Button(button_frame, text="Run the code!", command=run_code)
+    main_button.pack(side="left", padx=10)
+    main_button.config(bg="#748E61", fg="#ffffff")
 
-    decode_button = tk.Button(button_frame, text="Decode", command=run_decode)
-    decode_button.pack(side="left", padx=10)
-    
     quit_button = tk.Button(button_frame, text="Quit", command=root.destroy)
     quit_button.pack(side="bottom", pady=10)
+    quit_button.config(bg="#748E61", fg="#ffffff")
     
-    #Output text
-    output_label = tk.Label(root, text="", wraplength=350, fg="black")
-    output_label.pack(pady=20)
+    #Create a textbox to display everything
+    output_text = tk.Text(root, width=70, height=15, wrap="word")
+    output_text.pack(pady=20)
+    output_text.config(bg="#d4bd82")
+    output_text.config(state="disabled")
     
     root.mainloop()
