@@ -5,11 +5,11 @@ def random_error(codemessages): #hoofdletter maakt het class, random overschrijf
     """simulates errors in code that happen because of noise"""
     # 1 in 10 accurence of 2 mistakes
     twochanges = random.randint(0,9)   
-
+    codemessage = random.choice(codemessages)
     #when 2 mistakes accure somewhere in the list of codes 
-    if twochanges == 0:
+    if twochanges == 0 and codemessage.kolommen >= 2:
         #locatie willekeurig kiezen 
-        codemessage = codemessages[random.randint(0, len(codemessages)-1)]
+        #codemessage = codemessages[random.randint(0, len(codemessages)-1)] #ik heb dit aangepast zodat het met andere r-waarden werkt
         places = random.sample(range(0,codemessage.kolommen), 2) 
 
         #aanpassen op 2 plaatsen
@@ -17,9 +17,8 @@ def random_error(codemessages): #hoofdletter maakt het class, random overschrijf
         codemessage.vorm[places[1]][0] = 1 - codemessage.vorm[places[1]][0]
         return codemessages 
 
-    #when only 1 and 0 mistakes accure in each code
+    #when only 1 mistake accures in each code
     else:
-        # determine if 1 or 0 mistakes happen per code
         for codemessage in codemessages: 
             place = random.randint(0, codemessage.kolommen-1)    
             codemessage.vorm[place][0] = 1 - codemessage.vorm[place][0]
