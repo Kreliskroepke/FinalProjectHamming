@@ -41,7 +41,7 @@ def convert_to_string(allknabbels):        #input = allknabbels is list met matr
         for row in allknabbels[i].vorm:
             binarymessage += str(row[0])
     k = len(allknabbels[0].vorm)
-    b = 2*k #2 keer de lengte van het codewoord
+    b = k if k > 8 else 8 
     for char in binarymessage:
         tempmessage += char
         if len(tempmessage) == b:
