@@ -3,11 +3,11 @@ from Matrixclass import Matrix
 def binaryconvert(tekst, k=4):                #input = str
     """takes text as input and returns a list of binary messages"""
     nibblelist = []
-    bit_base = k #dit werkt nog niet voor r!=3
-    
+    bit_base = k 
+    b = 2*k #2 keer de lengte van de databits
     for i in tekst:
-        bits8 = format(ord(i), '08b')
-        nibbles = [bits8[j:j+bit_base] for j in range(0, 8, bit_base)]
+        bits = format(ord(i), f'0{b}b')
+        nibbles = [bits[j:j+bit_base] for j in range(0, b, bit_base)]
         for nibble in nibbles:
             nibble = [int(c) for c in nibble]
             nibblelist.append(nibble)
