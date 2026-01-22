@@ -21,16 +21,8 @@ def random_error(codemessages): #hoofdletter maakt het class, random overschrijf
     else:
         # determine if 1 or 0 mistakes happen per code
         for codemessage in codemessages: 
-            changes = random.randint(0,1)  
-
-            #change bit for 1 mistake 
-            if changes == 1:
-                place = random.randint(0, codemessage.kolommen-1)    
-                codemessage.vorm[place][0] = 1 - codemessage.vorm[place][0]
-                
-            # for no mistake in code 
-            else: 
-                continue
+            place = random.randint(0, codemessage.kolommen-1)    
+            codemessage.vorm[place][0] = 1 - codemessage.vorm[place][0]
 
         # output list of matrices 
         return codemessages
