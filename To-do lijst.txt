@@ -151,6 +151,7 @@ Testen en eventueel verbeteren code
 time complexity als we tijd over hebben
 assert 
 unit tests
+-assert r > 2 oid, zodat onze code niet breekt
 
 Schrijven README-file
 
