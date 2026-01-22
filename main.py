@@ -8,7 +8,7 @@ from Window import Windowmaker
 def main():
     message = "hi"
     r = 3 #aantal parity bits
-
+#misschien hier assert r >2 maken? 
     G = G_matrix(r)
     G_t = G.transpose()
     H = H_matrix(r)
