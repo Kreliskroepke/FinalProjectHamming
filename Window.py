@@ -1,5 +1,6 @@
 import tkinter as tk
-import tkinter.font as tkfont
+import tkinter.font as tkfont #change fonttype
+from tkinter import scrolledtext #get a scrollbar on textblocks
 from encoderfunctions import *
 from decoderfunctions import *
 from Matrixclass import Matrix
@@ -94,9 +95,11 @@ def Windowmaker():
     quit_button.config(bg="#748E61", fg="#ffffff")
     
     #Create a textbox to display everything
-    output_text = tk.Text(root, width=70, height=15, wrap="word")
+    output_text = scrolledtext.ScrolledText(root, width=70, height=15, wrap="word")
     output_text.pack(pady=20)
     output_text.config(bg="#d4bd82")
     output_text.config(state="disabled")
     
     root.mainloop()
+
+Windowmaker()
