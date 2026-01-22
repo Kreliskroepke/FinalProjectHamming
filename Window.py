@@ -8,7 +8,7 @@ from matrixmakers import * #contains: G_matrix, H_matrix, R_matrix
 
 def Windowmaker():
     
-    r = 3 #aantal parity bits
+    r = 3 #number of parity bits
     
     G = G_matrix(r)
     G_t = G.transpose()
@@ -19,18 +19,20 @@ def Windowmaker():
     def run_code():
         """This takes a string, and returns the result + in-betweens"""
         user_input = entry.get()
+        #if input is blank or all spaces:
         if not user_input.strip():
-            #state="normal" maakt de textbox editable
+            #state="normal" makes the textbox editable
             output_text.config(state="normal")
             #delete everything from row 1 char 0 to end
             output_text.delete("1.0", tk.END)
-            #add the text at the end (if removing tk.END it broke)
+            #add the text at the end
             output_text.insert(tk.END, "Please fill in a message.")
             output_text.config(state="disabled")
             return
         result = tussenstappen(user_input, G_t)
         formatted = formatting(result)
         
+        #add the formatted form of all intermediate steps
         output_text.config(state="normal")
         output_text.delete("1.0", tk.END)
         output_text.insert(tk.END, formatted)
