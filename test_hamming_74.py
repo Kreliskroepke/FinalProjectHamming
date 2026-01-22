@@ -7,7 +7,7 @@ from matrixmakers import * #contains: G_matrix, H_matrix, R_matrix
 
 """
 this test only works for r=3, to test values of r > 3 please use test_hamming.py
-To use, paste the following into the terminal: py -m pytest test_hamming.py
+To use, paste the following into the terminal: py -m pytest test_hamming_74.py
 """
 
 r = 3 
@@ -125,3 +125,4 @@ def test_entire_code():
     assert decode(random_error(encode("math is underrated", G_t)), H, R) == "math is underrated"
     assert decode(random_error(encode("00000000", G_t)), H, R) == "00000000"
     assert decode(random_error(encode("i**2=-1", G_t)), H, R) == "i**2=-1"
+
