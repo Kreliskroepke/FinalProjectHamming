@@ -14,8 +14,8 @@ class Matrix:
     #define addition
     def __add__(self,other):
         if isinstance(other, Matrix):
+            #only add same size matrices
             if self.rijen != other.rijen or self.kolommen != other.kolommen:
-                #thanks stackexchange
                 raise ValueError("The matrices aren't the same size")
             else: 
                 #empty matrix with the same dimensions
@@ -32,8 +32,9 @@ class Matrix:
 
     #define multiplication
     def __mul__(self, other):
+        #Matrix * matrix
         if isinstance(other, Matrix):
-            #Columns of A must match the rows of B
+            #number of columns of A must match the rows of B
             if self.kolommen != other.rijen:
                 raise ValueError("The matrices have the wrong sizes")
             else:
@@ -87,12 +88,12 @@ class Matrix:
     @staticmethod
     def nulmatrix_maker(k,n):
         """static function to replace np.zeros, used for matrix transformations"""
-        n=int(n) #n is kolom
-        k=int(k) #k is rij
+        n=int(n) #n is number of columns
+        k=int(k) #k is number of rows
     
         nulmatrix = []
         for i in range(0,k):
             extrarow = [0] * n
             nulmatrix.append(extrarow)
         
-        return nulmatrix        #output is een list
+        return nulmatrix     #output is a list
