@@ -1,6 +1,8 @@
 import tkinter as tk
 from encoderfunctions import *
 from decoderfunctions import *
+from Matrixclass import Matrix
+from matrixmakers import * #contains: G_matrix, H_matrix, R_matrix
 
 """
 Notes:
@@ -15,9 +17,14 @@ zie bijvoorbeeld: https://stackoverflow.com/questions/13318742/python-logging-to
 volgens mij moeten we in de codes waar we iets willen laten zien (encode, random_error, decode) een logger maken en dan in windowmaker moet er ook iets gebeuren (dat is dan volgens mij logging window)??
 """
 
-def windowmaker():
+r = 3 #aantal parity bits
 
-    def run_encode():
+G = G_matrix(r)
+G_t = G.transpose()
+H = H_matrix(r)
+R = R_matrix(r)
+
+def run_encode():
         """This takes a string, and returns the encoded message in the window"""
         user_input = entry.get()
         if not user_input.strip():
@@ -63,7 +70,7 @@ def windowmaker():
     quit_button = tk.Button(button_frame, text="Quit", command=root.destroy)
     quit_button.pack(side="bottom", pady=10)
 
-    # Output text
+    #Output text
     output_label = tk.Label(root, text="", wraplength=350, fg="black")
     output_label.pack(pady=20)
 
