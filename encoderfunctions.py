@@ -26,3 +26,11 @@ def encode(tekst, G_t):      #input = str
             codemessage = G_t * p_vector
             codemessages.append(codemessage)
     return codemessages                #output codemessages = list of Matrices IS DIT HANDIG?
+
+def readableEncoder(nibblelist):
+    """This prints a string of binary in segments of 4, for window"""
+    Readable = ""
+    for i in nibblelist:
+        for j in i:
+            Readable += str(j)
+    return ' '.join(Readable[i:i+4] for i in range(0,len(Readable),4))
