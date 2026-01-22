@@ -38,6 +38,6 @@ py -m pytest test_hamming.py
 
 ## Authors
 
-Nicky Kroon (3342115)
-Madelief Mols (9423117)
-Cornelis Roepke (8798133)
+* Nicky Kroon (3342115)
+* Madelief Mols (9423117)
+* Cornelis Roepke (8798133)
