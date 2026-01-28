@@ -33,23 +33,25 @@ def correct(codemessage, H):     #input = matrix, matrix
 
 def convert_to_string(allknabbels):     #input = allknabbels is list of matrices
     """converts binary into text""" 
-    decodedmessage = ""
-    tempmessage = ""
-    binarymessage = ""
-    for i in range(len(allknabbels)):
-        for row in allknabbels[i].vorm:
-            binarymessage += str(row[0])
+
     k = len(allknabbels[0].vorm)
     b = k if k > 8 else 8 
-    for char in binarymessage:
-        tempmessage += char
-        if len(tempmessage) == b:
-            ascii_value = int(tempmessage, 2)
-            chara = chr(ascii_value)
-            decodedmessage += chara
-            tempmessage = ""
-            continue
-    return decodedmessage     #output = str
+
+    decodedmessage = []
+    tempmessage = []
+
+    for i in range(len(allknabbels)):
+        for row in allknabbels[i].vorm:
+            tempmessage.append(str(row[0]))
+
+            #if your # of bits is 8 or k:
+            if len(tempmessage) == b:
+                ascii_value = int("".join(tempmessage), 2)
+                decodedmessage.append(chr(ascii_value))
+                #empty the templist
+                tempmessage.clear()
+
+    return "".join(decodedmessage) #output = str
 
 def decode(codemessages, H, R):     #input is nu list of matrices
     """takes list of codemessages, checks errors, corrects and translates to text, returns text message"""
