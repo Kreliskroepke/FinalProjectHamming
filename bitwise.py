@@ -66,7 +66,3 @@ def bitwise_hamming():
     for i in range(0, len(binarymessage), b):
             byte = binarymessage[i:i+b]
             decodedmessage += chr(int(byte, 2))
-
-    print(message)
-    print(decodedmessage)
-bitwise_hamming()
