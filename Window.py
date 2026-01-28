@@ -16,6 +16,11 @@ def Windowmaker():
     R = R_matrix(r)
     k = G_t.kolommen
 
+    def on_quit():
+        """Destroy the widget and stop mainloop()"""
+        root.quit()
+        root.destroy()
+
     def run_code():
         """This takes a string, and returns the result + in-betweens"""
         user_input = entry.get()
@@ -91,7 +96,7 @@ def Windowmaker():
     main_button.pack(side="left", padx=10)
     main_button.config(bg="#748E61", fg="#ffffff")
 
-    quit_button = tk.Button(button_frame, text="Quit", command=root.destroy)
+    quit_button = tk.Button(button_frame, text="Quit", command=on_quit)
     quit_button.pack(side="bottom", pady=10)
     quit_button.config(bg="#748E61", fg="#ffffff")
     
