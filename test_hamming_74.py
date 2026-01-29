@@ -1,13 +1,13 @@
-from decoderfunctions import * #contains: decode, correct, position, convert_to_string, is_zero_matrix
-from encoderfunctions import * #contains: encode, binaryconvert
-from errorCreation import random_error
+from decoderFunctions import * #contains: decode, correct, position, convertToString, isZeroMatrix
+from encoderFunctions import * #contains: encode, binaryConvert
+from errorCreation import randomError
 from main import main
 from Matrixclass import Matrix
 from matrixmakers import * #contains: G_matrix, H_matrix, R_matrix
 
 """
-this test only works for r=3, to test values of r > 3 please use test_hamming.py
-To use, paste the following into the terminal: py -m pytest test_hamming_74.py
+This test only works for r=3, because of the size of the test input.
+To test values of r > 3 please use test_hamming.py
 """
 
 r = 3 
@@ -73,9 +73,9 @@ def test_encode():
 
 def test_random_error():
     """Test a random error"""
-    assert random_error(encode("hi", G_t)) != encode("hi", G_t)
-    assert random_error(encode("roomba is stuck on the carpet", G_t)) != encode("roomba is stuck on the carpet", G_t)
-    assert random_error(encode("hi", G_t)) != encode("hi", G_t)
+    assert randomError(encode("hi", G_t)) != encode("hi", G_t)
+    assert randomError(encode("roomba is stuck on the carpet", G_t)) != encode("roomba is stuck on the carpet", G_t)
+    assert randomError(encode("hi", G_t)) != encode("hi", G_t)
 
 def test_decode():
     #This tests if the decoder gives "math"
@@ -119,10 +119,10 @@ def test_decode():
     actual_n = decode(input_matrix, H, R)
     assert actual_n == "n!=6"
 
-
 def test_entire_code():
-    assert decode(random_error(encode("our code works!", G_t)), H, R) == "our code works!"
-    assert decode(random_error(encode("math is underrated", G_t)), H, R) == "math is underrated"
-    assert decode(random_error(encode("00000000", G_t)), H, R) == "00000000"
+    assert decode(randomError(encode("our code works!", G_t)), H, R) == "our code works!"
+    assert decode(randomError(encode("math is underrated", G_t)), H, R) == "math is underrated"
+    assert decode(randomError(encode("00000000", G_t)), H, R) == "00000000"
     assert decode(random_error(encode("i**2=-1", G_t)), H, R) == "i**2=-1"
+
 
