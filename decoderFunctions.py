@@ -30,7 +30,7 @@ def correct(codemessage, H):
 
 def convertToString(all_knabbels): 
     """converts binary into text""" 
-    k = len(allknabbels[0].vorm)
+    k = len(all_knabbels[0].vorm)
     b = k if k > 8 else 8 
 
     decodedmessage = []
