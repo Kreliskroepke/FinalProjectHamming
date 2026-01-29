@@ -1,6 +1,6 @@
 from decoderFunctions import * #contains: decode, correct, position, convertToString, isZeroMatrix
 from encoderFunctions import * #contains: encode, binaryConvert
-from errorCreation import random_error
+from errorCreation import randomError
 from Matrixclass import Matrix
 from matrixMakers import * #contains: G_matrix, H_matrix, R_matrix
 from window import windowmaker
