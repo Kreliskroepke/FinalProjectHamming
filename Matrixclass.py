@@ -86,7 +86,7 @@ class Matrix:
         return resultaat
 
     @staticmethod
-    def nulmatrix_maker(k,n):
+    def nulmatrixMaker(k,n):
         """static function to replace np.zeros, used for matrix transformations"""
         n=int(n) #n is number of columns
         k=int(k) #k is number of rows
