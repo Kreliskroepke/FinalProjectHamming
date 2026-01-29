@@ -105,5 +105,3 @@ def windowmaker():
     output_text.config(bg="#d4bd82")
     output_text.config(state="disabled")
     root.mainloop()
-
-windowmaker()
