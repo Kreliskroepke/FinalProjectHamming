@@ -17,7 +17,10 @@ def main():
     codemessages = encode(message, G_t) 
     codemessages = randomError(codemessages) 
     receivedmessage = decode(codemessages, H, R)
+
+    windowmaker(r)
+    
     return receivedmessage
 
 if __name__ == "__main__":
-    windowmaker()
+    main()
