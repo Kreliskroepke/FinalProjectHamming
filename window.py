@@ -6,9 +6,7 @@ from encoderFunctions import *
 from Matrixclass import Matrix
 from matrixMakers import * #contains: G_matrix, H_matrix, R_matrix
 
-def windowmaker():
-    r = 3 #number of parity bits
-    
+def windowmaker(r=3):
     G = G_matrix(r)
     G_t = G.transpose()
     H = H_matrix(r)
