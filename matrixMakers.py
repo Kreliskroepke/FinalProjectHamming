@@ -5,12 +5,12 @@ def G_matrix(r=3):
     n = 2**r -1	#n is length of codemessage
     k = n - r 	#k is number of databits / length of knabbel
 
-    #Ontop every 2**p in a codemessage, there comes a paritybit from 0 to r-1 (so r=3 has a parity on 2**0, 2**1 and 2**2)
+    #Ontop every 2**p in a codemessage, there comes a parity bit from 0 to r-1 (so r=3 has a parity on 2**0, 2**1 and 2**2)
     parity_positions = [2**p for p in range(r)]
     #on the places with no paritybit, there comes a databit
     data_positions = [d for d in range(1,n+1) if d not in parity_positions]
     
-    G = Matrix.nulmatrix_maker(k,n)
+    G = Matrix.nulmatrixMaker(k,n)
 
     for row, databit in enumerate(data_positions):
         #Put 1 on each databit position
