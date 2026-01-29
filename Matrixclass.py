@@ -19,7 +19,7 @@ class Matrix:
                 raise ValueError("The matrices aren't the same size")
             else: 
                 #empty matrix with the same dimensions
-                result = Matrix(self.nulmatrix_maker(self.rijen, self.kolommen))
+                result = Matrix(self.nulmatrixMaker(self.rijen, self.kolommen))
 
                 #for all rows
                 for i in range(self.rijen):
@@ -38,7 +38,7 @@ class Matrix:
             if self.kolommen != other.rijen:
                 raise ValueError("The matrices have the wrong sizes")
             else:
-                resultaat = Matrix(self.nulmatrix_maker(self.rijen, other.kolommen))
+                resultaat = Matrix(self.nulmatrixMaker(self.rijen, other.kolommen))
 
             for i in range(self.rijen):
                 for j in range(other.kolommen):
@@ -57,13 +57,13 @@ class Matrix:
         
         #scalar multiplication for ints and floats
         elif isinstance(other, int):
-            resultaat = Matrix(self.nulmatrix_maker(self.rijen, self.kolommen))
+            resultaat = Matrix(self.nulmatrixMaker(self.rijen, self.kolommen))
             for i in range(self.rijen):
                 for j in range(self.kolommen):
                     resultaat.vorm[i][j] = (self.vorm[i][j] * other) % 2
             return resultaat
         elif isinstance(other, float): 
-            resultaat = Matrix(self.nulmatrix_maker(self.rijen, self.kolommen))
+            resultaat = Matrix(self.nulmatrixMaker(self.rijen, self.kolommen))
             for i in range(self.rijen):
                 for j in range(self.kolommen):
                     resultaat.vorm[i][j] = (self.vorm[i][j] * other) % 2
@@ -78,7 +78,7 @@ class Matrix:
     
     def transpose(self):
         """takes matrix and returns transposed matrix"""
-        resultaat = Matrix(self.nulmatrix_maker(self.kolommen, self.rijen))
+        resultaat = Matrix(self.nulmatrixMaker(self.kolommen, self.rijen))
 
         for i in range(self.kolommen):
             for j in range(self.rijen):
