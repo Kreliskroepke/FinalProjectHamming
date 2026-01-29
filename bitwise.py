@@ -1,4 +1,4 @@
-from encoderfunctions import binaryconvert
+from encoderFunctions import binaryConvert
 import random
 
 def bitwise_hamming():
@@ -13,11 +13,11 @@ def bitwise_hamming():
   
     #message to be sent
     message = "bit+wise-operator101"
-    knabbellijst = binaryconvert(message,k)
+    knabbel_list = binaryConvert(message,k)
     
     #encoding message
     codemessages = []
-    for knabbel in knabbellijst:
+    for knabbel in knabbel_list:
         codemessage = [0]*n
         for data in range(k):
             codemessage[data_positions[data]-1] = knabbel[data]
