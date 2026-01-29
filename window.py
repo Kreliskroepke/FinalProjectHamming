@@ -1,10 +1,10 @@
 import tkinter as tk
 import tkinter.font as tkfont #change fonttype
 from tkinter import scrolledtext #get a scrollbar on textblocks
-from decoderfunctions import *
-from encoderfunctions import *
+from decoderFunctions import *
+from encoderFunctions import *
 from Matrixclass import Matrix
-from matrixmakers import * #contains: G_matrix, H_matrix, R_matrix
+from matrixMakers import * #contains: G_matrix, H_matrix, R_matrix
 
 def windowmaker():
     r = 3 #number of parity bits
@@ -44,7 +44,7 @@ def windowmaker():
 
     def tussenstappen(a, G_t):
         """Very slow way to get all in-between steps"""
-        binary = binaryconvert(a,k)
+        binary = binaryConvert(a,k)
         readableBinary = readableEncoder(binary)
         encodedmessage = encode(a, G_t)
         decodedmessage = decode(encodedmessage, H, R)
@@ -104,7 +104,6 @@ def windowmaker():
     output_text.pack(pady=20)
     output_text.config(bg="#d4bd82")
     output_text.config(state="disabled")
-    
     root.mainloop()
 
 windowmaker()
