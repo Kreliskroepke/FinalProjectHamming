@@ -22,22 +22,6 @@ If that does not work, run ```python -m pip install pytest``` in the command ter
 * Select download as zip
 * Unzip the files into a single folder
 
-### Folder structure
-
-FinalProjectHamming/
-├── main.py                  # Runs the GUI
-├── window.py                # GUI implementation
-├── encoderFunctions.py      # Encoding functions
-├── errorCreation.py         # Introduces random error
-├── decoderFunctions.py      # Decoding functions
-├── matrixMakers.py          # Builds G,H,R matrices
-├── Matrixclass.py           # Custom Matrix class
-├── bitwise.py               # Bitwise implementation
-├── test_hamming.py          # Unit tests general Hamming code
-├── test_hamming_74.py       # Unit tests Hamming(7,4) code
-└── test_time.py             # Time comparison matrix and bitwise implementation
-
-
 ### Executing program
 
 ** Running the main file:
