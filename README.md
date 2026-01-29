@@ -1,13 +1,18 @@
 # Final Project Hamming
-Programmeren voor Wiskunde Final Project
+Our Programmeren voor Wiskunde Final Project.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+This project runs a Hamming(7,4) encoder and decoder. When opened you will be greeted with a popup window, our GUI, where you can fill in some text, and it will generate the text in binary, convert it into a matrix, and then simulates a random error, and then returns the output of our code, which will be the same as the input. To change the Hamming(7,4) to a general Hamming(n,k) code, change the r variable in main.py. r=4 will give you a Hamming(15,11) code; r=5 will give you a Hamming(31,26) code; etc, etc. We refer to our report on this project for any further explanation of our code, and we refer to the installing and executing down below.
 
 ## Getting Started
 
-Something something
+To get started make sure you have the latest version of Python: Python 3.14.0.
+
+For the unit tests you need to make sure you have piptest installed.
+To verify if pytest is installed, run ```pytest --version``` in the command terminal.
+If pytest is not yet installed, run ```pip install pytest``` in the command terminal.
+If that does not work, run ```python -m pip install pytest``` in the command terminal.
 
 ### Installing
 
