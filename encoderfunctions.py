@@ -1,6 +1,6 @@
 from Matrixclass import Matrix
 
-def binaryconvert(text, k=4):
+def binaryConvert(text, k=4):
     """takes text as input and returns a list of binary messages"""
     knabbel_list = []
     bit_base = k 
@@ -17,7 +17,7 @@ def encode(text, G_t):
     """takes a message, translates it to binary, and returns a list with codemessages"""
     codemessages = []
     k = G_t.kolommen
-    knabbel_list = binaryconvert(tekst, k)
+    knabbel_list = binaryConvert(tekst, k)
     for i in knabbel_list:
         if G_t.kolommen != len(i):
             raise ValueError("The length of the knabbel doesn't coincide with the dimensions of G")
