@@ -25,7 +25,7 @@ def encode(text, G_t):
             p_vector = Matrix([[int(char)] for char in i])
             codemessage = G_t * p_vector
             codemessages.append(codemessage)
-    return codemessages     #output codemessages = list of matrices 
+    return codemessages     #output codemessages is list of matrices 
 
 def readableEncoder(knabbel_list):
     """This prints a string of binary in segments of 4, for window"""
