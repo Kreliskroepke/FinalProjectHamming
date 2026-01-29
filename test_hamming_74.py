@@ -3,7 +3,7 @@ from encoderFunctions import * #contains: encode, binaryConvert
 from errorCreation import randomError
 from main import main
 from Matrixclass import Matrix
-from matrixmakers import * #contains: G_matrix, H_matrix, R_matrix
+from matrixMakers import * #contains: G_matrix, H_matrix, R_matrix
 
 """
 This test only works for r=3, because of the size of the test input.
@@ -123,6 +123,4 @@ def test_entire_code():
     assert decode(randomError(encode("our code works!", G_t)), H, R) == "our code works!"
     assert decode(randomError(encode("math is underrated", G_t)), H, R) == "math is underrated"
     assert decode(randomError(encode("00000000", G_t)), H, R) == "00000000"
-    assert decode(random_error(encode("i**2=-1", G_t)), H, R) == "i**2=-1"
-
-
+    assert decode(randomError(encode("i**2=-1", G_t)), H, R) == "i**2=-1"
