@@ -1,13 +1,12 @@
 import tkinter as tk
 import tkinter.font as tkfont #change fonttype
 from tkinter import scrolledtext #get a scrollbar on textblocks
-from encoderfunctions import *
 from decoderfunctions import *
+from encoderfunctions import *
 from Matrixclass import Matrix
 from matrixmakers import * #contains: G_matrix, H_matrix, R_matrix
 
-def Windowmaker():
-    
+def windowmaker():
     r = 3 #number of parity bits
     
     G = G_matrix(r)
@@ -108,4 +107,4 @@ def Windowmaker():
     
     root.mainloop()
 
-Windowmaker()
+windowmaker()
