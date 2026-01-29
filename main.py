@@ -1,9 +1,9 @@
-from decoderfunctions import * #contains: decode, correct, position, convert_to_string, is_zero_matrix
-from encoderfunctions import * #contains: encode, binaryconvert
+from decoderFunctions import * #contains: decode, correct, position, convertToString, isZeroMatrix
+from encoderFunctions import * #contains: encode, binaryConvert
 from errorCreation import random_error
 from Matrixclass import Matrix
-from matrixmakers import * #contains: G_matrix, H_matrix, R_matrix
-from Window import Windowmaker
+from matrixMakers import * #contains: G_matrix, H_matrix, R_matrix
+from window import windowmaker
 
 def main():
     """Main code, mainly for tests"""
@@ -15,9 +15,9 @@ def main():
     R = R_matrix(r)
 
     codemessages = encode(message, G_t) 
-    codemessages = random_error(codemessages) 
+    codemessages = randomError(codemessages) 
     receivedmessage = decode(codemessages, H, R)
     return receivedmessage
 
 if __name__ == "__main__":
-    Windowmaker()
+    windowmaker()
