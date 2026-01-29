@@ -11,7 +11,7 @@ def binaryconvert(text, k=4):
         for knabbel in knabbels:
             knabbel = [int(c) for c in knabbel]
             knabbel_list.append(knabbel)
-    return knabbel_list
+    return knabbel_list #output is list of lists
 
 def encode(text, G_t):
     """takes a message, translates it to binary, and returns a list with codemessages"""
@@ -25,7 +25,7 @@ def encode(text, G_t):
             p_vector = Matrix([[int(char)] for char in i])
             codemessage = G_t * p_vector
             codemessages.append(codemessage)
-    return codemessages     #output codemessages is list of matrices 
+    return codemessages     #output is list of matrices 
 
 def readableEncoder(knabbel_list):
     """This prints a string of binary in segments of 4, for window"""
