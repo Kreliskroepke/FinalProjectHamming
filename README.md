@@ -23,7 +23,7 @@ If that does not work, run ```python -m pip install pytest``` in the command ter
 * Unzip the files into a single folder
 
 ### Folder structure
-"""
+
 FinalProjectHamming/
 ├── main.py                  # Runs the GUI
 ├── window.py                # GUI implementation
@@ -36,7 +36,7 @@ FinalProjectHamming/
 ├── test_hamming.py          # Unit tests general Hamming code
 ├── test_hamming_74.py       # Unit tests Hamming(7,4) code
 └── test_time.py             # Time comparison matrix and bitwise implementation
-"""
+
 
 ### Executing program
 
