@@ -27,7 +27,7 @@ def H_matrix(r=3):
     """makes rxn parity-check matrix based on number of parity bits"""
     n = 2**r -1
 
-    H = Matrix.nulmatrix_maker(r,n)
+    H = Matrix.nulmatrixMaker(r,n)
     for column in range(1,n+1):
         bits = format(column, f"0{r}b")
         #swaps the bits such that it conforms to the matrix on wikipedia, this code can probably be better, but it works...
@@ -45,7 +45,7 @@ def R_matrix(r=3):
     parity_positions = [2**p for p in range(r)]
     data_positions = [d for d in range(1,n+1) if d not in parity_positions]
     
-    R = Matrix.nulmatrix_maker(k,n)
+    R = Matrix.nulmatrixMaker(k,n)
     
     for row, databit in enumerate(data_positions):
         R[row][databit-1] = 1
