@@ -1,6 +1,6 @@
 from Matrixclass import Matrix
 
-def is_zero_matrix(mat):     #input=matrix
+def isZeroMatrix(mat):
     """Checks if a matrix is all zero's"""
     for row in mat.vorm:
         for value in row:
@@ -8,18 +8,15 @@ def is_zero_matrix(mat):     #input=matrix
                 return False
     return True
 
-def position(vector):     #input = matrix
+def position(vector): 
     """takes vector, returns binary number that it forms"""
     num = 0
     for i in range(vector.rijen-1, -1, -1): 
         num = (num*2 + vector.vorm[i][0])
- 
-    return (num)     #output = number
+    return (num)     #output is integer
 
-def correct(codemessage, H):     #input = matrix, matrix
+def correct(codemessage, H): 
     """checks if message has errors and corrects them"""
-
-    #position error
     error_position = position(H*codemessage)
 
     #switch the bits from 0 to 1 and vice versa
@@ -29,19 +26,18 @@ def correct(codemessage, H):     #input = matrix, matrix
     if position(H*codemessage) != 0:
         raise ValueError("The message has 2 errors in one letter")
     else:
-        return codemessage     #output = matrix
+        return codemessage     #output is matrix
 
-def convert_to_string(allknabbels):     #input = allknabbels is list of matrices
+def convertToString(all_knabbels): 
     """converts binary into text""" 
-
     k = len(allknabbels[0].vorm)
     b = k if k > 8 else 8 
 
     decodedmessage = []
     tempmessage = []
 
-    for i in range(len(allknabbels)):
-        for row in allknabbels[i].vorm:
+    for i in range(len(all_knabbels)):
+        for row in all_knabbels[i].vorm:
             tempmessage.append(str(row[0]))
 
             #if your # of bits is 8 or k:
@@ -51,19 +47,17 @@ def convert_to_string(allknabbels):     #input = allknabbels is list of matrices
                 #empty the templist
                 tempmessage.clear()
 
-    return "".join(decodedmessage) #output = str
+    return "".join(decodedmessage) #output is str
 
-def decode(codemessages, H, R):     #input is nu list of matrices
+def decode(codemessages, H, R):
     """takes list of codemessages, checks errors, corrects and translates to text, returns text message"""
-    allnibbles = []
-
-    codemessages = codemessages
+    all_knabbels = []
     for codemessage in codemessages:
         vector = H * codemessage
-        if not is_zero_matrix(vector):
+        if not isZeroMatrix(vector):
             codemessage = correct(codemessage, H)   
-        receivednibble = R * codemessage
-        allnibbles.append(receivednibble)
+        received_knabbel = R * codemessage
+        all_knabbels.append(received_knabbel)
 
-    receivedmessage = convert_to_string(allnibbles)  
-    return receivedmessage
+    receivedmessage = convertToString(all_knabbels)  
+    return receivedmessage #output is text
