@@ -17,7 +17,7 @@ def encode(text, G_t):
     """takes a message, translates it to binary, and returns a list with codemessages"""
     codemessages = []
     k = G_t.kolommen
-    knabbel_list = binaryConvert(tekst, k)
+    knabbel_list = binaryConvert(text, k)
     for i in knabbel_list:
         if G_t.kolommen != len(i):
             raise ValueError("The length of the knabbel doesn't coincide with the dimensions of G")
