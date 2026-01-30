@@ -9,7 +9,7 @@ def randomError(codemessages):
     if twochanges == 0 and codemessage.kolommen >= 2:
         places = random.sample(range(0,codemessage.kolommen), 2) 
 
-        #Fix the error on 2 places
+        #place the errors on 2 places
         codemessage.vorm[places[0]][0] = 1 - codemessage.vorm[places[0]][0]   
         codemessage.vorm[places[1]][0] = 1 - codemessage.vorm[places[1]][0]
         return codemessages 
